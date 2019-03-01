@@ -1,0 +1,21 @@
+@media screen and (max-width: 600px){
+	.menu-search {
+		display: none;
+	}
+
+	.menu-search-collapsed {
+		
+	}
+}
+
+@media screen and (min-width: 601px) {
+
+	.menu-search {
+		
+	}
+
+	.menu-search-collapsed {
+		display: none;
+	}
+
+}
