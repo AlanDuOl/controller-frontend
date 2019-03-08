@@ -6,12 +6,25 @@ import '../../css/MenuDropdown.css'
 class MenuDropdown extends Component {
 	constructor(props){
 		super(props)
+		
+		this.state = {
+			active: false
+		}
+		
+		this.toggleMenu = this.toggleMenu.bind(this)
 	}
+	
+		
+	toggleMenu(){
+		const currentState = this.state.active
+		this.setState({ active: !currentState })
+	}
+	
 	render() {
 		return(
 			<div className="menu-dropdown">
-				<Nav className="mr-auto fa fa-align-justify menu-dropdown-button"></Nav>
-				<Nav className="mr-auto menu-dropdown-content">
+				<Nav onClick={this.toggleMenu} className="mr-auto fa fa-align-justify menu-dropdown-button"></Nav>
+				<Nav className={this.state.active ? "mr-auto menu-dropdown-content toggle-menu" : "mr-auto menu-dropdown-content"}>
 					<Nav.Link href="#home">Home</Nav.Link>
 					<NavDropdown title="Usuário" id="basic-nav-dropdown">
 						<NavDropdown.Item href="#users/:id">Perfil</NavDropdown.Item>
