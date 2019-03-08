@@ -8,14 +8,14 @@ import '../../css/MenuSearch.css'
 class MenuSearch extends Component {
   render() {
     return (
-		<>
-		<Form inline className="menu-search-collapsed fa fa-search">
-		</Form>
-		<Form inline className="menu-search">
-			<FormControl type="text" placeholder="Search" className="mr-sm-2" />
-			<Button variant="outline-info">Search</Button>
-		</Form>
-		</>
+		<div className="menu-search">
+			<Form inline className="menu-search-icon fa fa-search">
+			</Form>
+			<Form inline className="menu-search-box">
+				<FormControl type="text" placeholder="Search" className="mr-sm-2" />
+				<Button variant="outline-info">Search</Button>
+			</Form>
+		</div>
     );
   }
 }

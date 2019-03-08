@@ -12,12 +12,10 @@ class Menu extends Component {
 	}
 	render() {
 		return (
-			<div className="menu">
-				<Navbar bg="dark" variant="dark">
+			<Navbar bg="dark" variant="dark" className="menu-bar">
 				<MenuDropdown />
 				<MenuSearch />
-				</Navbar>
-			</div>
+			</Navbar>
 		)
 	}
 }

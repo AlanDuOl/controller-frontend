@@ -1,24 +1,35 @@
 @media screen and (max-width: 600px){
-	.menu-dropdown {
+	.menu-dropdown-content {
 		display: none;
 	}
 
-	.menu-dropdown-collapsed:hover + .menu-dropdown {
+	.menu-dropdown-button:hover + .menu-dropdown-content {
 		display: flex;
 		flex-direction: column;
-		position: relative;
-		top: 10px;
+		position: absolute;
+		background-color: #343a40;
+	}
+	
+	.menu-dropdown-content:hover {
+		display: flex;
+		flex-direction: column;
+		position: absolute;
+		background-color: #343a40;
+	}
+	
+	.menu-dropdown {
+		text-align: left;
 	}
 }
 
 @media screen and (min-width: 601px) {
 
-	.menu-dropdown {
-		
-	}
-
-	.menu-dropdown-collapsed {
+	.menu-dropdown-button {
 		display: none;
 	}
 
+}
+
+.menu-dropdown {
+	text-align: left;
 }
