@@ -25,27 +25,27 @@ class MenuDropdown extends Component {
 			<div className="menu-dropdown">
 				<Nav onClick={this.toggleMenu} className="mr-auto fa fa-align-justify menu-dropdown-button"></Nav>
 				<Nav className={this.state.active ? "mr-auto menu-dropdown-content toggle-menu" : "mr-auto menu-dropdown-content"}>
-					<Nav.Link href="#home">Home</Nav.Link>
+					<Nav.Link href="/" onClick={this.toggleMenu}>Home</Nav.Link>
 					<NavDropdown title="Usuário" id="basic-nav-dropdown">
-						<NavDropdown.Item href="#users/:id">Perfil</NavDropdown.Item>
-						<NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
-						<NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
+						<NavDropdown.Item href="#users/:id" onClick={this.toggleMenu}>Perfil</NavDropdown.Item>
+						<NavDropdown.Item href="#action/3.2" onClick={this.toggleMenu}>Another action</NavDropdown.Item>
+						<NavDropdown.Item href="#action/3.3" onClick={this.toggleMenu}>Something</NavDropdown.Item>
 						<NavDropdown.Divider />
-						<NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
+						<NavDropdown.Item href="#action/3.4" onClick={this.toggleMenu}>Separated link</NavDropdown.Item>
 					</NavDropdown>
 					<NavDropdown title="Operações" id="basic-nav-dropdown">
-						<NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-						<NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
-						<NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
+						<NavDropdown.Item href="#action/3.1" onClick={this.toggleMenu}>Action</NavDropdown.Item>
+						<NavDropdown.Item href="#action/3.2" onClick={this.toggleMenu}>Another action</NavDropdown.Item>
+						<NavDropdown.Item href="#action/3.3" onClick={this.toggleMenu}>Something</NavDropdown.Item>
 						<NavDropdown.Divider />
-						<NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
+						<NavDropdown.Item href="#action/3.4" onClick={this.toggleMenu}>Separated link</NavDropdown.Item>
 					</NavDropdown>
 					<NavDropdown title="Relatórios" id="basic-nav-dropdown">
-						<NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-						<NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
-						<NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
+						<NavDropdown.Item href="#action/3.1" onClick={this.toggleMenu}>Action</NavDropdown.Item>
+						<NavDropdown.Item href="#action/3.2" onClick={this.toggleMenu}>Another action</NavDropdown.Item>
+						<NavDropdown.Item href="#action/3.3" onClick={this.toggleMenu}>Something</NavDropdown.Item>
 						<NavDropdown.Divider />
-						<NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
+						<NavDropdown.Item href="#action/3.4" onClick={this.toggleMenu}>Separated link</NavDropdown.Item>
 					</NavDropdown>
 				</Nav>
 			</div>

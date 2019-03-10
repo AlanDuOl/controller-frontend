@@ -3,30 +3,18 @@
 		display: none;
 	}
 
-	.menu-search-icon:hover + .menu-search-box {
+	.search-box {
 		display: flex;
 		flex-direction: column;
 		position: absolute;
+		top: 30px;
 		right: 10px;
 		background-color: #343a40;
-		border-radius: 5px;
 	}
-	
-	.menu-search-box:hover {
-		display: flex;
-		flex-direction: column;
-		position: absolute;
-		right: 10px;
-		background-color: #343a40;
-		border-radius: 5px;
-	}
+
 }
 
 @media screen and (min-width: 601px) {
-
-	.menu-search-box {
-		
-	}
 
 	.menu-search-icon {
 		display: none;
@@ -37,3 +25,4 @@
 .menu-search {
 	text-align: right;
 }
+
