@@ -1,0 +1,19 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 500px;
+    height: 60vh;
+    padding-top: 50px;
+    justify-content: space-around;
+}
+
+.container input {
+    border-radius: 3px;
+}
+
+.auth-link {
+    text-decoration: underline;
+    color: blue;
+    cursor: pointer;
+}

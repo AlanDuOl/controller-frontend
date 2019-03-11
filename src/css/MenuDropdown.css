@@ -20,4 +20,32 @@
 
 .menu-dropdown {
 	text-align: left;
+	text-decoration: none;
+	color: red;
+}
+
+.link {
+	text-decoration: none;
+	color: rgba(255, 255, 255, 0.5);
+	background-color: transparent;
+	list-style: none;
+}
+
+.link:hover {
+	text-decoration: none;
+	color: rgba(255, 255, 255, .8);
+	background-color: #343a40;
+	list-style: none;
+}
+
+.link-item {
+	text-decoration: none;
+	color: #16181b;
+	list-style: none;
+}
+
+.link-item:hover {
+	text-decoration: none;
+	color: #16181b;
+	list-style: none;
 }
