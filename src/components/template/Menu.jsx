@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Navbar, Nav, Form, FormControl, Button, NavDropdown } from 'react-bootstrap'
+import { Navbar } from 'react-bootstrap'
 
 import '../../css/Menu.css'
 import MenuSearch from '../single/MenuSearch.jsx'

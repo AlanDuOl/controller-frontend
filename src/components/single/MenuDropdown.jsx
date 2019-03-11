@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Navbar, Nav, Form, FormControl, Button, NavDropdown } from 'react-bootstrap'
+import { Nav, NavDropdown } from 'react-bootstrap'
+import { Link } from 'react-router-dom'
 
 import '../../css/MenuDropdown.css'
 
@@ -25,11 +26,9 @@ class MenuDropdown extends Component {
 			<div className="menu-dropdown">
 				<Nav onClick={this.toggleMenu} className="mr-auto fa fa-align-justify menu-dropdown-button"></Nav>
 				<Nav className={this.state.active ? "mr-auto menu-dropdown-content toggle-menu" : "mr-auto menu-dropdown-content"}>
-					<Nav.Link href="/" onClick={this.toggleMenu}>Home</Nav.Link>
+					<Nav.Link href="/" onClick={this.toggleMenu}><Link className="link" to="/">Home</Link></Nav.Link>
 					<NavDropdown title="Usuário" id="basic-nav-dropdown">
-						<NavDropdown.Item href="#users/:id" onClick={this.toggleMenu}>Perfil</NavDropdown.Item>
-						<NavDropdown.Item href="#action/3.2" onClick={this.toggleMenu}>Another action</NavDropdown.Item>
-						<NavDropdown.Item href="#action/3.3" onClick={this.toggleMenu}>Something</NavDropdown.Item>
+						<NavDropdown.Item href="#users/:id" onClick={this.toggleMenu}><Link className="link-item" to="/Perfil">Perfil</Link></NavDropdown.Item>
 						<NavDropdown.Divider />
 						<NavDropdown.Item href="#action/3.4" onClick={this.toggleMenu}>Separated link</NavDropdown.Item>
 					</NavDropdown>
