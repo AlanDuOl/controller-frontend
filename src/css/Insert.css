@@ -1,0 +1,19 @@
+.insert-form {
+    /* display: flex;
+    flex-wrap: wrap; */
+}
+
+.form-row {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border: 1px solid gray;
+    border-radius: 5px;
+    margin: 10px 5px;
+    padding: 5px 3px;
+    background-color: #EAEAEA;
+}
+
+#form-group {
+    margin-bottom: 0;
+}
