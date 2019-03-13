@@ -4,20 +4,22 @@ import NotFound from '../components/NotFount'
 import Auth from '../components/auth/Auth'
 import Insert from '../components/transaction/Insert'
 import Home from '../components/home/Home'
-import { MenuDropdown as Links } from '../components/single/MenuDropdown.jsx'
+import Header from '../components/template/Header'
 
-const Routing = (
-    <div>
+const Routing = () => (
         <BrowserRouter>
-            {Links.Links}
-            <Switch>
-                <Route exact path="/" component={Home} />
-                <Route path="/auth" component={Auth} />
-                <Route path="/transactions/insert" component={Insert} />
-                <Route path="*" component={NotFound} />
-            </Switch>
+			<div>
+				<Header />
+				<Switch>
+					<div className="content">
+						<Route exact path="/" component={Home} />
+						<Route path="/auth" component={Auth} />
+						<Route path="/transactions/insert" component={Insert} />
+						<Route path="*" component={NotFound} />
+					</div>
+				</Switch>
+			</div>
         </BrowserRouter>
-    </div>
 )
 
 export default Routing

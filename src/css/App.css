@@ -1,10 +1,1 @@
-.App {
-	display: grid;
-	height: 100vh;
-	grid-template-areas:
-			"header"
-			"content"
-			"footer";
-	grid-template-columns: 1fr;
-	grid-template-rows: 1.6fr 9.4fr 1fr
-}
+
