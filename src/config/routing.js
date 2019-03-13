@@ -1,19 +1,23 @@
 import React from 'react'
-import { Route, BrowserRouter as Router, Switch } from 'react-router-dom'
-import App from '../App';
+import { Route, BrowserRouter, Switch } from 'react-router-dom'
 import NotFound from '../components/NotFount'
 import Auth from '../components/auth/Auth'
 import Insert from '../components/transaction/Insert'
+import Home from '../components/home/Home'
+import { MenuDropdown as Links } from '../components/single/MenuDropdown.jsx'
 
-const routing = (
-    <Router>
-        <Switch>
-            <Route exact path="/" component={App} />
-            <Route path="/auth" component={Auth} />
-            <Route path="/transactions/insert" component={Insert} />
-            <Route component={NotFound} />
-        </Switch>
-    </Router>
+const Routing = (
+    <div>
+        <BrowserRouter>
+            {Links.Links}
+            <Switch>
+                <Route exact path="/" component={Home} />
+                <Route path="/auth" component={Auth} />
+                <Route path="/transactions/insert" component={Insert} />
+                <Route path="*" component={NotFound} />
+            </Switch>
+        </BrowserRouter>
+    </div>
 )
 
-export default routing
+export default Routing

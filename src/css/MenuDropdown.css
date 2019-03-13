@@ -49,3 +49,30 @@
 	color: #16181b;
 	list-style: none;
 }
+
+.menu-dropdown {
+	display: flex;
+}
+
+.link-home {
+	padding: .5rem 1rem;
+	color: rgba(255,255,255,.5);
+}
+.link-home:hover {
+	padding: .5rem 1rem;
+	color: rgba(255,255,255,.8);
+	text-decoration: none;
+	background-color: transparent;
+	list-style: none;
+}
+
+.link-item {
+	padding: 4px 24px 0 24px;
+	color: #212529;
+	clear: both;
+	font-weight: 400;
+	background-color: transparent;
+	border: 0;
+	text-decoration: none;
+	font-size: 1rem;
+}
