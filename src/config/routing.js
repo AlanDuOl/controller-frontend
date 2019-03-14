@@ -11,12 +11,10 @@ const Routing = () => (
 			<div>
 				<Header />
 				<Switch>
-					<div className="content">
-						<Route exact path="/" component={Home} />
-						<Route path="/auth" component={Auth} />
-						<Route path="/transactions/insert" component={Insert} />
-						<Route path="*" component={NotFound} />
-					</div>
+					<Route exact path="/" component={Home} />
+					<Route path="/auth" component={Auth} />
+					<Route path="/transactions/insert" component={Insert} />
+					<Route path="" component={NotFound} />
 				</Switch>
 			</div>
         </BrowserRouter>
