@@ -10,7 +10,7 @@ class MenuDropdown extends Component {
 		super(props)
 
 		this.state = {
-			active: false
+			activeMenu: false
 		}
 
 		this.toggleMenu = this.toggleMenu.bind(this)
@@ -18,18 +18,16 @@ class MenuDropdown extends Component {
 
 	toggleMenu() {
 		const currentState = this.state.active
-		this.setState({ active: !currentState })
+		this.setState({ activeMenu: !currentState })
 	}
 
 	render() {
 		return (
 			<div className="menu-dropdown">
 				<Nav onClick={this.toggleMenu} className="mr-auto fa fa-align-justify menu-dropdown-button"></Nav>
-				<Nav className={this.state.active ? "mr-auto menu-dropdown-content toggle-menu" : "mr-auto menu-dropdown-content"}>
-					<div className={this.state.active ? "menu-dropdown toggle-menu" : "menu-dropdown"}>
+				<Nav className={this.state.activeMenu ? "mr-auto menu-dropdown-content toggle-menu" : "mr-auto menu-dropdown-content"}>
 						<Link className="link-home" to="/" onClick={this.toggleMenu}>Home</Link>
-						<Dropdown title="Operações" links={[{name: "Inserir", path: "/transactions/insert"}, {name: "Visualizar", path: "/transactions/view"}]}/>
-					</div>
+						<Dropdown activeMenu={this.state.activeMenu} title="Operações" links={[{name: "Inserir", path: "/transactions/insert"}, {name: "Visualizar", path: "/transactions/view"}]}/>
 				</Nav>
 			</div>
 		)

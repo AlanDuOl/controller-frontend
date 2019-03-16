@@ -25,26 +25,6 @@
 	color: red;
 }
 
-.menu-items {
-	display: flex;
-	flex-direction: column;
-	padding: 0;
-}
-
-.link {
-	text-decoration: none;
-	color: rgba(255, 255, 255, 0.5);
-	background-color: transparent;
-	list-style: none;
-}
-
-.link:hover {
-	text-decoration: none;
-	color: rgba(255, 255, 255, .8);
-	background-color: #343a40;
-	list-style: none;
-}
-
 .link-home {
 	padding: 8px;
 	color: rgba(255,255,255,.5);
@@ -57,19 +37,3 @@
 	list-style: none;
 }
 
-.link-item {
-	padding: 4px 24px 0 24px;
-	color: #212529;
-	clear: both;
-	font-weight: 400;
-	background-color: transparent;
-	border: 0;
-	text-decoration: none;
-	font-size: 1rem;
-}
-
-.link-item:hover {
-	color: #16181b;
-	text-decoration: none;
-	background-color: #f8f9fa;
-}
