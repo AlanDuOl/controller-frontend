@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import Routing from '../../config/Routing.js'
+import Routing from '../../config/Routing'
 import Footer from './Footer'
 import '../../css/Content.css'
 
