@@ -8,7 +8,6 @@ class Dropdown extends Component {
         super(props)
 
         this.state = {
-            activeMenu: this.props.activeMenu,
             activeDropdown: false
         }
     }

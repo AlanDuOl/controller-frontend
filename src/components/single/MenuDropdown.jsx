@@ -12,22 +12,39 @@ class MenuDropdown extends Component {
 		this.state = {
 			activeMenu: false
 		}
-
-		this.toggleMenu = this.toggleMenu.bind(this)
 	}
 
-	toggleMenu() {
-		const currentState = this.state.active
+	openMenu = () => {
+		let currentState = this.state.activeMenu
 		this.setState({ activeMenu: !currentState })
 	}
+
+	handleClick = event => {
+		const dropdown = document.getElementsByClassName('dropdown-group')
+		const btn = document.getElementsByClassName('menu-btn')
+        if(event.target !== dropdown[0] && event.target !== btn[0]){
+			console.log(this.state.activeMenu)
+            if(this.state.activeMenu){
+                this.setState({ activeMenu: false })
+            }
+        }
+    }
+
+    componentDidMount(){
+		document.addEventListener('click', this.handleClick, true)
+    }
+
+    componentWillUnmount(){
+        document.removeEventListener('click', this.handleClick, true)
+    }
 
 	render() {
 		return (
 			<div className="menu-dropdown">
-				<Nav onClick={this.toggleMenu} className="mr-auto fa fa-align-justify menu-dropdown-button"></Nav>
-				<Nav className={this.state.activeMenu ? "mr-auto menu-dropdown-content toggle-menu" : "mr-auto menu-dropdown-content"}>
-						<Link className="link-home" to="/" onClick={this.toggleMenu}>Home</Link>
-						<Dropdown activeMenu={this.state.activeMenu} title="Operações" links={[{name: "Inserir", path: "/transactions/insert"}, {name: "Visualizar", path: "/transactions/view"}]}/>
+				<Nav onClick={this.openMenu} className="mr-auto menu-btn"></Nav>
+				<Nav className={this.state.activeMenu ? "mr-auto show-menu" : "mr-auto hide-menu"}>
+						<Link className="link-home" to="/">Home</Link>
+						<Dropdown title="Operações" links={[{name: "Inserir", path: "/transactions/insert"}, {name: "Visualizar", path: "/transactions/view"}]}/>
 				</Nav>
 			</div>
 		)

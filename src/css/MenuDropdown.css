@@ -1,28 +1,39 @@
 @media screen and (max-width: 600px){
-	.menu-dropdown-content {
+	.hide-menu {
 		display: none;
 	}
 
-	.toggle-menu {
+	.show-menu {
 		display: flex;
-		flex-direction: column;
+		flex-direction: column !important;
 		position: absolute;
-		top: 12px;
+		top: 30px;
 		background-color: #343a40;
+	}
+
+	.menu-btn::after {
+		font-family: "Font Awesome 5 Free";
+		font-weight: 900;
+		content: "\f039";
+	}
+
+	.menu-btn:hover {
+		cursor: pointer;
 	}
 }
 
 @media screen and (min-width: 601px) {
-	.menu-dropdown-button {
+	.menu-btn {
 		display: none;
 	}
 }
 
-.menu-dropdown {
-	display: flex;
-	text-align: left;
-	text-decoration: none;
-	color: red;
+.show-menu:hover {
+	/* display: flex; */
+	/* text-align: left; */
+	/* text-decoration: none; */
+	/* color: red; */
+	cursor: pointer;
 }
 
 .link-home {
