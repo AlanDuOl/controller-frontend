@@ -12,6 +12,10 @@
 		background-color: #343a40;
 	}
 
+	.menu-search-icon:hover {
+		cursor: pointer;
+	}
+
 }
 
 @media screen and (min-width: 601px) {

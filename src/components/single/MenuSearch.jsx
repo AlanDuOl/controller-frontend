@@ -10,7 +10,7 @@ class MenuSearch extends Component {
 				super(props)
 				
 				this.state = {
-				    menuActice: false
+				    activeMenu: false
 				}
 
 				this.toggleSearch = this.toggleSearch.bind(this)
@@ -18,25 +18,44 @@ class MenuSearch extends Component {
 		}
 
 	toggleSearch() {
-			let currentState = this.state.menuActice
-			this.setState({ menuActice : !currentState })
+			let currentState = this.state.activeMenu
+			this.setState({ activeMenu : !currentState })
 	}
 
 	handleSubmit(e) {
 			if(e.keyCode === 13 || e.which === 13){
-					let currentState = this.state.menuActice
-					this.setState({ menuActice: !currentState})
+					let currentState = this.state.activeMenu
+					this.setState({ activeMenu: !currentState})
 			}
 	}
+
+	handleClick = event => {
+		const box = document.getElementsByClassName('menu-search-box')
+		const icon = document.getElementsByClassName('menu-search-icon')
+		const inputBox = document.getElementsByClassName('mr-sm-2')
+		if(event.target !== box[0] && event.target !== icon[0] && event.target !== inputBox[0]){
+				if(this.state.activeMenu){
+						this.setState({ activeMenu: false })
+				}
+		}
+	}
+
+	componentDidMount(){
+				document.addEventListener('click', this.handleClick, true)
+		}
+
+		componentWillUnmount(){
+				document.removeEventListener('click', this.handleClick, true)
+		}
 
   render() {
     return (
 			<div className="menu-search">
 				<Form onClick={this.toggleSearch} inline className="menu-search-icon fa fa-search">
 				</Form>
-				<Form inline className={this.state.menuActice ? "menu-search-box search-box" : "menu-search-box"}>
+				<Form inline className={this.state.activeMenu ? "menu-search-box search-box" : "menu-search-box"}>
 					<FormControl type="text" placeholder="Search" className="mr-sm-2" onKeyPress={this.handleSubmit}/>
-					<Button variant="outline-info" onClick={this.toggleSearch}>Search</Button>
+					<Button variant="outline-info">Search</Button>
 				</Form>
 			</div>
     );

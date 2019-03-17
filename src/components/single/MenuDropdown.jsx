@@ -23,7 +23,6 @@ class MenuDropdown extends Component {
 		const dropdown = document.getElementsByClassName('dropdown-group')
 		const btn = document.getElementsByClassName('menu-btn')
         if(event.target !== dropdown[0] && event.target !== btn[0]){
-			console.log(this.state.activeMenu)
             if(this.state.activeMenu){
                 this.setState({ activeMenu: false })
             }
