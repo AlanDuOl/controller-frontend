@@ -10,10 +10,9 @@ class Auth extends Component {
 
 		this.state = {
 			loginPage: true,
-			logged: false
+			logged: false,
+			user: {}
 		}
-
-		this.user = {}
 
 		this.togglePage = this.togglePage.bind(this)
 		this.handleSubmit = this.handleSubmit.bind(this)
@@ -25,7 +24,7 @@ class Auth extends Component {
 	signup(){
 		axios.post(`${baseApiUrl}/signup`, this.user)
 			.then(() => {
-					this.user = {}
+					this.setState({ user: {} })
 					this.state.loginPage = true
 				})
 			.catch(e => console.log(e))
@@ -34,7 +33,7 @@ class Auth extends Component {
 	signin(){
 		axios.post(`${baseApiUrl}/signin`, this.user)
 			.then(res => {
-				this.user = res.data
+				this.setState({ user: res.data })
 			})
 			.catch(e => console.log(e))
 	}
