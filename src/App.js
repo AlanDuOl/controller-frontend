@@ -9,8 +9,8 @@ class App extends Component {
       <div className="App">
           <Content />
       </div>
-    );
+    )
   }
 }
 
-export default App;
+export default App

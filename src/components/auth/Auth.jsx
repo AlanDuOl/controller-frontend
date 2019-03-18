@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import '../../css/Auth.css'
 import { withRouter } from 'react-router'
 import axios from 'axios'
-import { baseApiUrl } from '../../global'
+import { baseApiUrl, userKey } from '../../global'
 
 class Auth extends Component {
 	constructor(props){
@@ -24,15 +24,19 @@ class Auth extends Component {
 
 	signup(){
 		axios.post(`${baseApiUrl}/signup`, this.user)
-		.then(() => {
-				console.log(this.user)
-				this.user = {}
-				this.state.loginPage = true
-			})
+			.then(() => {
+					this.user = {}
+					this.state.loginPage = true
+				})
+			.catch(e => console.log(e))
 	}
 
 	signin(){
-
+		axios.post(`${baseApiUrl}/signin`, this.user)
+			.then(res => {
+				this.user = res.data
+			})
+			.catch(e => console.log(e))
 	}
 
 	togglePage() {
