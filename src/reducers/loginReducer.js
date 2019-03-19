@@ -3,16 +3,14 @@ const initialState = {
 	user: {}
 }
 
-export const loginReducer = (state = initialState, action) => {
+export default (state = initialState, action) => {
 	switch(action.type){
-		case 'SINGIN':
+		case 'setUser':
 			return {
 				...state,
-				user: action.value
+				user: action.newUser
 			}
 		default:
 			return state
 	}
 }
-
-export default loginReducer
