@@ -1,6 +1,12 @@
 import { createStore } from 'redux'
-import { Reducers } from '../reducers/Reducers'
+import signinReducer from '../reducers/signinReducer'
 
-const Store = createStore(Reducers)
+const defaultState = {
+    user: {}
+}
 
-export default Store
+function configureStore(state = defaultState){
+    return createStore(signinReducer, state)
+}
+
+export default configureStore

@@ -1,7 +1,9 @@
 
-export const signinAction = user => {
+const signinAction = (user) => {
     return {
         type: "setUser",
-        newUser: user
+        user
     }
 }
+
+export default signinAction

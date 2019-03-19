@@ -1,16 +1,17 @@
 import React, { Component } from 'react'
 import '../../css/Auth.css'
-import { withRouter } from 'react-router'
+// import { withRouter } from 'react-router'
 import axios from 'axios'
 import { baseApiUrl, userKey } from '../../global'
+import { connect } from 'react-redux'
+import signinAction from '../../actions/signinAction'
 
 class Auth extends Component {
 	constructor(props){
 		super(props)
 
 		this.state = {
-			loginPage: true,
-			logged: false,
+			loginPage: true
 		}
 
 		this.user = {}
@@ -33,6 +34,7 @@ class Auth extends Component {
 	signin(){
 		axios.post(`${baseApiUrl}/signin`, this.user)
 			.then(res => {
+				this.props.signinAction(res.data)
 				localStorage.setItem(userKey, JSON.stringify(res.data))
 			})
 			.catch(e => console.log(e))
@@ -73,4 +75,12 @@ class Auth extends Component {
 	}
 }
 
-export default withRouter(Auth)
+const mapStateToProps = state => ({
+	...state
+});
+
+ const mapDispatchToProps = dispatch => ({
+	signinAction: (user) => dispatch(signinAction(user))
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Auth)
