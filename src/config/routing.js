@@ -1,23 +1,27 @@
-import React from 'react'
-import { Route, BrowserRouter, Switch } from 'react-router-dom'
-// import NotFound from '../components/NotFount'
-import Auth from '../components/auth/Auth'
-import Insert from '../components/transaction/Insert'
-import Home from '../components/home/Home'
-import Header from '../components/template/Header'
-import Store from './Store'
+import React, { Component } from 'react'
+import { BrowserRouter } from 'react-router-dom'
+import PrivateRoutes from './PrivateRoutes'
+import PublicRoutes from './PublicRoutes'
+import { connect } from 'react-redux'
+import { userKey } from '../global'
 
-const Routing = () => (
-        <BrowserRouter>
-			<div>
-				<Header />
-				<Switch>
-					<Route exact path="/" component={Home} />
-					<Route path="/transactions/insert" component={Insert} />
-					<Route path="" component={Auth} />
-				</Switch>
-			</div>
-        </BrowserRouter>
-)
+class Routing extends Component {
+	constructor(props){
+		super(props)
+		this.user = JSON.parse(localStorage.getItem(userKey))
+	}
 
-export default Routing
+	render(){
+		return (
+			<BrowserRouter>
+				{this.user.id ? <PrivateRoutes /> : <PublicRoutes />}
+			</BrowserRouter>
+		)
+	}
+}
+	
+const mapStateToProps = state => ({
+	...state
+});
+
+export default connect(mapStateToProps)(Routing)
