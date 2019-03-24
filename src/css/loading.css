@@ -1,0 +1,9 @@
+#loading {
+    display: flex;
+    justify-content: space-around;
+    height: 100vh;
+}
+
+img {
+    align-self: center;
+}

@@ -1,6 +1,9 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import '../../css/Dropdown.css'
+import { userKey } from '../../global'
+import { connect } from 'react-redux'
+import signinAction from '../../actions/signinAction'
 
 class Dropdown extends Component {
 
@@ -15,13 +18,22 @@ class Dropdown extends Component {
     toggleDropdown = () => {
         let currentState = this.state.activeDropdown
         this.setState({ activeDropdown: !currentState })
-	}
+    }
+    
+    signout = () => {
+        localStorage.setItem(userKey, '')
+        this.props.signinAction({})
+    }
 
     renderLink(){
         let result = []
         for(let index = 0; index < this.props.links.length; index++){
             let link = this.props.links[index]
-            result.push(<Link key={index} className="dropdown-link" to={link.path}>{link.name}</Link>)
+            if(link.signout) {
+                result.push(<Link key={index} className="dropdown-link" to={link.path} onClick={this.signout()}>{link.name}</Link>)
+            } else {
+                result.push(<Link key={index} className="dropdown-link" to={link.path}>{link.name}</Link>)
+            }
         }
         return result
     }
@@ -55,4 +67,12 @@ class Dropdown extends Component {
     }
 }
 
-export default Dropdown
+const mapStateToProps = state => ({
+	...state
+})
+
+const mapDispatchToProps = dispatch => ({
+	signinAction: (user) => dispatch(signinAction(user))
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(Dropdown)

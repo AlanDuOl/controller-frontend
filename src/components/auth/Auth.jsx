@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import '../../css/Auth.css'
-// import { withRouter } from 'react-router'
 import axios from 'axios'
 import { baseApiUrl, userKey } from '../../global'
 import { connect } from 'react-redux'
@@ -79,7 +78,7 @@ const mapStateToProps = state => ({
 	...state
 });
 
- const mapDispatchToProps = dispatch => ({
+const mapDispatchToProps = dispatch => ({
 	signinAction: (user) => dispatch(signinAction(user))
 });
 

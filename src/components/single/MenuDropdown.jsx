@@ -43,6 +43,7 @@ class MenuDropdown extends Component {
 				<Nav onClick={this.openMenu} className="mr-auto menu-btn"></Nav>
 				<Nav className={this.state.activeMenu ? "mr-auto show-menu" : "mr-auto hide-menu"}>
 						<Link className="link-home" to="/">Home</Link>
+						<Dropdown title="Usuário" links={[{name: "Perfil", path: "/user/:id"}, {name: "Sign out", path:"", signout:true}]} />
 						<Dropdown title="Operações" links={[{name: "Inserir", path: "/transactions/insert"}, {name: "Visualizar", path: "/transactions/view"}]}/>
 				</Nav>
 			</div>
