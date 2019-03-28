@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import Routing from '../../config/Routing'
-import Footer from './Footer'
 import '../../css/Content.css'
 import { connect } from 'react-redux'
 import signinAction from '../../actions/signinAction'
@@ -32,7 +31,6 @@ class Content extends Component {
 		return ( 
 			<div className="content">
 				<Routing className="routing" user={this.props.user} />
-				<Footer className="footer" />
 			</div>
 		)
 	}
