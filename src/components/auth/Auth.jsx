@@ -59,17 +59,19 @@ class Auth extends Component {
 
 	render() {
 		return (
-			<form className="container" onSubmit={this.handleSubmit}>
-				{this.state.loginPage ? null : <input name="name" type="text" placeholder="Nome" onChange={this.handleChange}/> }
-				<input name="email" type="text" placeholder="E-mail" onChange={this.handleChange}/>
-				<input name="password" type="password" placeholder="Senha" onChange={this.handleChange}/>
-				{this.state.loginPage ? null : <input name="confirmPassword" type="password" placeholder="Confirme a senha!" onChange={this.handleChange}/> }
-				{this.state.loginPage ? <button type="submit">Entrar</button> : 
-					<button type="submit">Registrar</button>}
-				<span onClick={this.togglePage}>						
-					{this.state.loginPage ? <span className="auth-link">Não tem cadastro? Registre-se aqui!</span> : <span className="auth-link">Já tem cadastro? Acesse o login!</span> }
-				</span>
-			</form>
+			<div id="container">
+				<form onSubmit={this.handleSubmit}>
+					{this.state.loginPage ? null : <input name="name" type="text" placeholder="Nome" onChange={this.handleChange}/> }
+					<input name="email" type="text" placeholder="E-mail" onChange={this.handleChange}/>
+					<input name="password" type="password" placeholder="Senha" onChange={this.handleChange}/>
+					{this.state.loginPage ? null : <input name="confirmPassword" type="password" placeholder="Confirme a senha!" onChange={this.handleChange}/> }
+					{this.state.loginPage ? <button type="submit">Entrar</button> : 
+						<button type="submit">Registrar</button>}
+					<span onClick={this.togglePage}>						
+						{this.state.loginPage ? <span className="auth-link">Não tem cadastro? Registre-se aqui!</span> : <span className="auth-link">Já tem cadastro? Acesse o login!</span> }
+					</span>
+				</form>
+			</div>
 		)
 	}
 }
