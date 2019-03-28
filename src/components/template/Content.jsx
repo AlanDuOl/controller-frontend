@@ -1,24 +1,15 @@
 import React, { Component } from 'react'
 import Routing from '../../config/Routing'
 import Footer from './Footer'
-import Loading from './Loading'
 import '../../css/Content.css'
 import { connect } from 'react-redux'
+import signinAction from '../../actions/signinAction'
 import axios from 'axios'
 import { userKey, baseApiUrl } from '../../global'
-import signinAction from '../../actions/signinAction'
 
 class Content extends Component {
 
-	constructor(props){
-		super(props)
-
-		this.state = {
-			readyToRender: false
-		}
-	}
-
-	validateToken = () => {
+	validateUser = () => {
 		const storeUser = localStorage.getItem(userKey)
 		if(storeUser){
 			const user = JSON.parse(storeUser)
@@ -26,27 +17,24 @@ class Content extends Component {
 				.then(res => {
 					if(res.data){
 						this.props.signinAction(user)
-						this.setState({ readyToRender: true })
-					} else {
-						console.log('user null')
 					}
 				})
 		} else {
-			this.setState({ readyToRender: true })
-			this.props.signinAction({ id: undefined })
+			console.log('no user on localStore')
 		}
 	}
 
 	componentDidMount(){
-		this.validateToken()
+		this.validateUser()
 	}
 
 	render() {
-		return this.state.readyToRender ?
-			( <div className="content">
+		return ( 
+			<div className="content">
 				<Routing className="routing" user={this.props.user} />
 				<Footer className="footer" />
-			</div> ) : ( <Loading /> )
+			</div>
+		)
 	}
 }
 

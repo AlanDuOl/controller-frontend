@@ -4,6 +4,7 @@ import '../../css/Dropdown.css'
 import { userKey } from '../../global'
 import { connect } from 'react-redux'
 import signinAction from '../../actions/signinAction'
+import { withRouter } from 'react-router'
 
 class Dropdown extends Component {
 
@@ -21,16 +22,17 @@ class Dropdown extends Component {
     }
     
     signout = () => {
+        this.props.signinAction({user: undefined})
         localStorage.setItem(userKey, '')
-        this.props.signinAction({})
+        this.props.router.replace('/auth')
     }
 
     renderLink(){
         let result = []
         for(let index = 0; index < this.props.links.length; index++){
             let link = this.props.links[index]
-            if(link.signout) {
-                result.push(<Link key={index} className="dropdown-link" to={link.path} onClick={this.signout()}>{link.name}</Link>)
+            if(link.path === '/auth') {
+                result.push(<Link key={index} className="dropdown-link" to={link.path} onClick={this.signout}>{link.name}</Link>)
             } else {
                 result.push(<Link key={index} className="dropdown-link" to={link.path}>{link.name}</Link>)
             }
@@ -75,4 +77,4 @@ const mapDispatchToProps = dispatch => ({
 	signinAction: (user) => dispatch(signinAction(user))
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(Dropdown)
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Dropdown))
