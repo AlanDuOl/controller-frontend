@@ -5,11 +5,12 @@ import Header from '../components/template/Header'
 import Footer from '../components/template/Footer'
 import NotFound from '../components/NotFount'
 import { Route, Switch, Redirect } from 'react-router-dom'
+import '../css/PrivateRoutes.css'
 
 class PrivateRoutes extends Component {
     render(){
         return(
-            <div>
+            <div id="private-routes">
 				<Header />
 				<Switch>
                     <Redirect from="/auth" to="/" />
@@ -17,7 +18,7 @@ class PrivateRoutes extends Component {
 					<Route path="/transactions/insert" component={Insert} />
 					<Route path="*" component={NotFound} />
 				</Switch>
-				<Footer className="footer" />
+				<Footer />
 			</div>
         )
     }

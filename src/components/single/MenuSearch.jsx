@@ -54,8 +54,8 @@ class MenuSearch extends Component {
 				<Form onClick={this.toggleSearch} inline className="menu-search-icon fa fa-search">
 				</Form>
 				<Form inline className={this.state.activeMenu ? "menu-search-box search-box" : "menu-search-box"}>
-					<FormControl type="text" placeholder="Search" className="mr-sm-2" onKeyPress={this.handleSubmit}/>
-					<Button variant="outline-info">Search</Button>
+					<FormControl type="text" placeholder="Pesquisa..." className="mr-sm-2" onKeyPress={this.handleSubmit}/>
+					<Button variant="outline-info">Buscar</Button>
 				</Form>
 			</div>
     );

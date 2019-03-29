@@ -29,9 +29,7 @@ class Content extends Component {
 
 	render() {
 		return ( 
-			<div className="content">
-				<Routing className="routing" user={this.props.user} />
-			</div>
+			<Routing user={this.props.user} />
 		)
 	}
 }

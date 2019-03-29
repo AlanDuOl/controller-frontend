@@ -1,3 +1,14 @@
-.footer {
+#footer {
+	display: flex;
     grid-area: footer;
+	padding: 3px 5px;
+}
+
+#footer-content::before {
+	padding-right: 5px;
+	font-size: 1rem;
+}
+
+#footer-content {
+	font-size: 1rem;
 }

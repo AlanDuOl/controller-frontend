@@ -1,0 +1,9 @@
+#private-routes {
+	display: grid;
+	grid-template-areas:
+		"header"
+		"content"
+		"footer";
+	grid-template-rows: 1fr 8.5fr 0.5fr;
+	/* height: 100vh; */
+}

@@ -1,3 +1,11 @@
+#insert-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+	grid-area: content;
+	padding: 8px 16px;
+}
+
 .insert-form {
     width: 100%;
 }
@@ -26,12 +34,6 @@
 
 #form-group {
     margin-bottom: 0;
-}
-
-#insert-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
 }
 
 .header {

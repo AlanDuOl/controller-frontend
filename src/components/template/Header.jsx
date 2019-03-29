@@ -7,7 +7,7 @@ import '../../css/Header.css'
 class Header extends Component {
 	render() {
 		return (
-			<header className="header">
+			<header id="header">
 				<Menu toggled={false}/>
 			</header>
 		)
