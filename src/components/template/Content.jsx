@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import Routing from '../../config/Routing'
+import Routing from '../../config/routing'
 import '../../css/Content.css'
 import { connect } from 'react-redux'
 import signinAction from '../../actions/signinAction'
