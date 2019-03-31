@@ -7,12 +7,11 @@ class Routing extends Component {
 
 	render(){
 		return (
-			<BrowserRouter>
-				<PrivateRoutes />
+			<BrowserRouter>				
+				{this.props.user.id ? <PrivateRoutes /> : <PublicRoutes />}
 			</BrowserRouter>
 		)
 	}
 
 }
-// {this.props.user.id ? <PrivateRoutes /> : <PublicRoutes />}
 export default Routing
