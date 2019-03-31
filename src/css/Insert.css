@@ -1,13 +1,26 @@
+/* containers */
 #insert-container {
     display: flex;
     flex-direction: column;
-    align-items: center;
-	grid-area: content;
+    grid-area: content;
 	padding: 8px 16px;
 }
 
-.insert-form {
+#form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 1.2rem;
+}
+
+#insert-form {
     width: 100%;
+    max-width: 100%;
+    height: 200px;
+}
+
+#form-header {
+    /* align-content: center; */
 }
 
 .form-row {
@@ -19,18 +32,13 @@
     margin: 10px 5px;
     padding: 5px 3px;
     background-color: #EAEAEA;
+    width: 100%;
 }
 
 #form-btn {
-    float: right;
-    padding-bottom: 6px;
-    margin-right: 5px;
+    width: 70px;
 }
 
-#form-btn-container {
-    /* display: flex; */
-    /* align-content: center; */
-}
 
 #form-group {
     margin-bottom: 0;
