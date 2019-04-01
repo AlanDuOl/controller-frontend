@@ -6,7 +6,7 @@ import signinAction from '../../actions/signinAction'
 import axios from 'axios'
 import { userKey, baseApiUrl } from '../../global'
 
-class Content extends Component {
+class Content extends Component {	
 
 	validateUser = () => {
 		const storeUser = localStorage.getItem(userKey)
