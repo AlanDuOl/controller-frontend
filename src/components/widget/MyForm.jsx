@@ -12,9 +12,8 @@ class MyForm extends Component {
     }
 
     save = () => {
-        console.log(this.data)
         axios.post(`${baseApiUrl}/transactions/insert`, this.data)
-            .then(res => console.log('user saved: ', res.data))
+            .then(res => console.log('transaction stored!'))
             .catch(err => console.log(err))
     }
 
