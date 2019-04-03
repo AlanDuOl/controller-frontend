@@ -7,7 +7,7 @@ import Table from '../widget/Table'
 class Insert extends Component {
 
     table = {
-        head: ['Natureza', 'Tipo', 'Descrição', 'Data', 'Valor'],
+        head: ['Natureza', 'Tipo', 'Descrição', 'Valor', 'Data'],
         data: {}
     }
 

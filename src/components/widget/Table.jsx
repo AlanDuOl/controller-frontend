@@ -4,7 +4,8 @@ import axios from 'axios'
 
 class Table extends Component {
 
-    transactions = {}
+    transactions = []
+	fields = ['type', 'transaction', 'description', 'amount', 'date']
 
     createHead = () => {
         const heads = []
@@ -13,27 +14,47 @@ class Table extends Component {
             heads.push(<th key={index} className="table-head-item">{head[index]}</th>)
         }
         return (
-            <thead id="table-head">{heads}</thead>
+            <thead id="table-head">
+				<tr>{heads}</tr>
+			</thead>
         )
     }
 
     createBody() {
         return (
-            <tbody id="table-body"></tbody>
+            <tbody id="table-body">
+				{this.loadData()}
+			</tbody>
         )
     }
 
-    loadData = () => {
+    getData = () => {
         axios.get(`${baseApiUrl}/transactions`)
-            .then(res => this.transactions = res.data[0])
+            .then(res => this.transactions = res.data)
             .catch(err => console.log('error with get transactions on table: ', err))
     }
+	
+	loadData = () => {
+		let data = []
+		for(let i = 0; i < this.transactions.length; i++){
+			let row = []
+			for(let a = 0; a < this.fields.length; a++){
+				row.push(<td>{this.transactions[i][this.fields[a]]}</td>)
+			}
+			data.push(row)
+		}
+		return data
+	}
+	
+	componentDidUpdate() {
+		this.createBody()
+	}
 
     render(){
         return (
             <table id="table">
                 {this.createHead()}
-                {this.loadData()}              
+                {this.getData()}        
             </table>
         )
     }
