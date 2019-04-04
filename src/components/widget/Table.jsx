@@ -3,9 +3,14 @@ import { baseApiUrl } from '../../global'
 import axios from 'axios'
 
 class Table extends Component {
+	
+	constructor(props){
+		super(props)
+		
+		this.state = { readyToLoad: false, transactions: [] }
+	}
 
-    transactions = []
-	fields = ['type', 'transaction', 'description', 'amount', 'date']
+	fields = ['type', 'transaction', 'description', 'amount', 'transactionDate']
 
     createHead = () => {
         const heads = []
@@ -30,31 +35,34 @@ class Table extends Component {
 
     getData = () => {
         axios.get(`${baseApiUrl}/transactions`)
-            .then(res => this.transactions = res.data)
-            .catch(err => console.log('error with get transactions on table: ', err))
+            .then(res => {
+				this.setState({ transactions: res.data, readyToLoad: true })
+			})
+            .catch(err => console.log('didnt load data from server: ', err))
     }
 	
 	loadData = () => {
-		let data = []
-		for(let i = 0; i < this.transactions.length; i++){
-			let row = []
+		let rows = []
+		for(let i = 0; i < this.state.transactions.length; i++){
+			let data = []
 			for(let a = 0; a < this.fields.length; a++){
-				row.push(<td>{this.transactions[i][this.fields[a]]}</td>)
-			}
-			data.push(row)
+				let el = (<td key={a}>{this.state.transactions[i][this.fields[a]]}</td>)
+				data.push(el)
+			}		
+			rows.push((<tr key={i}>{data}</tr>))
 		}
-		return data
+		return rows
 	}
 	
-	componentDidUpdate() {
-		this.createBody()
+	componentDidMount() {
+		this.getData()
 	}
 
     render(){
         return (
-            <table id="table">
+            <table id="table" onClick={this.print}>
                 {this.createHead()}
-                {this.getData()}        
+				{this.state.readyToLoad ? this.createBody() : console.log('data didnt finish to load') }
             </table>
         )
     }
