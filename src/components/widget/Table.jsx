@@ -42,12 +42,19 @@ class Table extends Component {
     }
 	
 	loadData = () => {
+		let options = { day: 'numeric', month: 'numeric', year: 'numeric' }
 		let rows = []
 		for(let i = 0; i < this.state.transactions.length; i++){
 			let data = []
 			for(let a = 0; a < this.fields.length; a++){
-				let el = (<td key={a}>{this.state.transactions[i][this.fields[a]]}</td>)
-				data.push(el)
+				if(a === 4){
+					let date = Date.parse(this.state.transactions[i][this.fields[a]])
+					let el = (<td key={a}>{new Date(date).toLocaleDateString("pt-BR", options)}</td>)	
+					data.push(el)
+				} else {
+					let el = (<td key={a}>{this.state.transactions[i][this.fields[a]]}</td>)	
+					data.push(el)
+				}
 			}		
 			rows.push((<tr key={i}>{data}</tr>))
 		}
@@ -60,9 +67,9 @@ class Table extends Component {
 
     render(){
         return (
-            <table id="table" onClick={this.print}>
+            <table id="table">
                 {this.createHead()}
-				{this.state.readyToLoad ? this.createBody() : console.log('data didnt finish to load') }
+				{this.state.readyToLoad ? this.createBody() : null }
             </table>
         )
     }
