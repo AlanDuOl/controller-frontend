@@ -20,6 +20,7 @@ class MyForm extends Component {
     handleSubmit = event => {
         event.preventDefault()
         this.save()
+		event.target.reset()
     }
 
     handleChange = event => {
@@ -54,13 +55,13 @@ class MyForm extends Component {
                             <Form.Label>Descrição da transação</Form.Label>
                             <Form.Control type="text" placeholder="Ex: compra produto xpto..." name="description" onChange={this.handleChange} />
                         </Form.Group>
+						<Form.Group className="col-width">
+                            <Form.Label>Valor</Form.Label>
+                            <Form.Control type="number" placeholder="R$..." name="amount" onChange={this.handleChange} />
+                        </Form.Group>
                         <Form.Group className="col-width">
                             <Form.Label>Data</Form.Label>
                             <Form.Control type="date" name="transactionDate" onChange={this.handleChange} />
-                        </Form.Group>
-                        <Form.Group className="col-width">
-                            <Form.Label>Valor</Form.Label>
-                            <Form.Control type="number" placeholder="R$..." name="amount" onChange={this.handleChange} />
                         </Form.Group>
                     </Form.Row>
                     <div id="form-btn-container">

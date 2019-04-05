@@ -14,7 +14,7 @@ class Insert extends Component {
     render() {
         return (
             <div id="insert-container">   
-                <MyForm user={this.props.user}/>
+                <MyForm user={this.props.user} />
                 <hr/>
                 <label id="tr-header">Transações recentes</label>
                 <Table table={this.table} />
