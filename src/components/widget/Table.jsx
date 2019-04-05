@@ -20,7 +20,7 @@ class Table extends Component {
         }
         return (
             <thead id="table-head">
-				<tr>{heads}</tr>
+				<tr className="table-row" >{heads}</tr>
 			</thead>
         )
     }
@@ -49,14 +49,14 @@ class Table extends Component {
 			for(let a = 0; a < this.fields.length; a++){
 				if(a === 4){
 					let date = Date.parse(this.state.transactions[i][this.fields[a]])
-					let el = (<td key={a}>{new Date(date).toLocaleDateString("pt-BR", options)}</td>)	
+					let el = (<td className="table-data" key={a}>{new Date(date).toLocaleDateString("pt-BR", options)}</td>)	
 					data.push(el)
 				} else {
-					let el = (<td key={a}>{this.state.transactions[i][this.fields[a]]}</td>)	
+					let el = (<td className="table-data" key={a}>{this.state.transactions[i][this.fields[a]]}</td>)	
 					data.push(el)
 				}
 			}		
-			rows.push((<tr key={i}>{data}</tr>))
+			rows.push((<tr className="table-row" key={i}>{data}</tr>))
 		}
 		return rows
 	}

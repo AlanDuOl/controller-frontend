@@ -52,7 +52,7 @@ class MyForm extends Component {
                             </Form.Control>
                         </Form.Group>
                         <Form.Group className="col-width">
-                            <Form.Label>Descrição da transação</Form.Label>
+                            <Form.Label>Descrição</Form.Label>
                             <Form.Control type="text" placeholder="Ex: compra produto xpto..." name="description" onChange={this.handleChange} />
                         </Form.Group>
 						<Form.Group className="col-width">

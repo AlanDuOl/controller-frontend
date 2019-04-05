@@ -16,7 +16,7 @@ class Insert extends Component {
             <div id="insert-container">   
                 <MyForm user={this.props.user} />
                 <hr/>
-                <label id="tr-header">Transações recentes</label>
+                <label id="table-header">Transações recentes</label>
                 <Table table={this.table} />
             </div>
         )

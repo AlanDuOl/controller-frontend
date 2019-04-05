@@ -54,16 +54,31 @@
 }
 
 #table {
-    border: 1px solid red;
-    width: calc(100% - 10px);
-    border-radius: 5px;
+    border: 1px solid black;
+    width: 100%;
     padding: 5px 3px;
-    /* margin: 10px 5px; */
     background-color: #EAEAEA;
 }
 
 #table-head {
-    /* text-align: left; */
-    /* font-weight: 400; */
-    /* color: red; */
+    border: 1px solid black;
+}
+
+#table-header {
+	text-align: center;
+	font-size: 1.2rem;
+}
+
+#table-body {
+	border: 1px solid black;
+}
+
+.table-data {
+	border: 1px solid black;
+	text-align: center;
+}
+
+.table-head-item {
+	border: 1px solid black;
+	text-align: center;
 }
