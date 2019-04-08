@@ -1,18 +1,37 @@
 @media screen and (max-width: 600px){
-	.menu-search-box {
+
+	.search-box {
 		display: none;
 	}
 
-	.search-box {
+	.search-box-show {
 		display: flex;
 		flex-direction: column;
 		position: absolute;
+		height: 200px;
 		top: 30px;
 		right: 10px;
 		background-color: #343a40;
 	}
 
-	.menu-search-icon:hover {
+	.search-box-hide {
+		display: none;
+	}
+
+	.search-icon {
+		width: 30px;
+		height: 100%;
+		padding: 0;
+		background-color: #343a40;
+	}
+
+	.search-icon::before {
+		font-family: "Font Awesome 5 Free";
+		font-weight: 900;
+		content: "\f002";
+	}
+
+	.search-icon:hover {
 		cursor: pointer;
 	}
 
@@ -20,21 +39,16 @@
 
 @media screen and (min-width: 601px) {
 
-	.menu-search-icon {
+	.search-icon {
 		display: none;
 	}
 
-}
+	.search-box {
+		display: flex;
+		height: 100%;
+		width: 100%;
+		padding: 4px;
+		border-radius: 5px;
+	}
 
-.menu-search {
-	text-align: right;
 }
-
-.menu-search-box {
-	display: flex;
-	height: 100%;
-	width: 100%;
-	padding: 4px;
-	border-radius: 5px;
-}
-

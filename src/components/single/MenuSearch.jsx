@@ -7,14 +7,14 @@ import '../../css/MenuSearch.css'
 
 class MenuSearch extends Component {
     constructor(props){
-				super(props)
-				
-				this.state = {
-				    activeMenu: false
-				}
+			super(props)
+			
+			this.state = {
+				activeMenu: false
+			}
 
-				this.toggleSearch = this.toggleSearch.bind(this)
-				this.handleSubmit = this.handleSubmit.bind(this)
+			this.toggleSearch = this.toggleSearch.bind(this)
+			this.handleSubmit = this.handleSubmit.bind(this)
 		}
 
 	toggleSearch() {
@@ -48,17 +48,17 @@ class MenuSearch extends Component {
 				document.removeEventListener('click', this.handleClick, true)
 		}
 
-  render() {
-    return (
-			<div className="menu-search">
-				<Form onClick={this.toggleSearch} inline className="menu-search-icon fa fa-search">
-				</Form>
-				<Form inline className={this.state.activeMenu ? "menu-search-box search-box" : "menu-search-box"}>
-					<FormControl type="text" placeholder="Pesquisa..." className="mr-sm-2" onKeyPress={this.handleSubmit}/>
-					<Button variant="outline-info">Buscar</Button>
-				</Form>
-			</div>
-    );
+	render() {
+		return (
+				<div className="menu-search">
+					<Form onClick={this.toggleSearch} inline className="search-icon">
+					</Form>
+					<Form inline className={this.state.activeMenu ? "search-box-show" : "search-box search-box-hide"}>
+						<FormControl type="text" placeholder="Pesquisa..." className="mr-sm-2" onKeyPress={this.handleSubmit}/>
+						<Button variant="outline-info">Buscar</Button>
+					</Form>
+				</div>
+		);
 	}
 
 }

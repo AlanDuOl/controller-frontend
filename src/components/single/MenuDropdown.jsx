@@ -10,21 +10,21 @@ class MenuDropdown extends Component {
 		super(props)
 
 		this.state = {
-			activeMenu: false
+			toggleMenu: false
 		}
 	}
 
 	openMenu = () => {
-		let currentState = this.state.activeMenu
-		this.setState({ activeMenu: !currentState })
+		let currentState = this.state.toggleMenu
+		this.setState({ toggleMenu: !currentState })
 	}
 
 	handleClick = event => {
 		const dropdown = document.getElementsByClassName('dropdown-group')
 		const btn = document.getElementsByClassName('menu-btn')
         if(event.target !== dropdown[0] && event.target !== btn[0]){
-            if(this.state.activeMenu){
-                this.setState({ activeMenu: false })
+            if(this.state.toggleMenu){
+                this.setState({ toggleMenu: false })
             }
         }
     }
@@ -41,7 +41,7 @@ class MenuDropdown extends Component {
 		return (
 			<div className="menu-dropdown">
 				<Nav onClick={this.openMenu} className="mr-auto menu-btn"></Nav>
-				<Nav className={this.state.activeMenu ? "mr-auto show-menu" : "mr-auto hide-menu"}>
+				<Nav className={this.state.toggleMenu ? "mr-auto show-menu" : "mr-auto hide-menu"}>
 						<Link className="link-home" to="/">Home</Link>
 						<Dropdown title="Usuário" links={[{name: "Perfil", path: "/user/:id"}, {name: "Sign-out", path:"/auth"}]} />
 						<Dropdown title="Operações" links={[{name: "Inserir", path: "/transactions/insert"}, {name: "Visualizar", path: "/transactions/view"}]}/>
