@@ -15,14 +15,6 @@
     display: none;
 }
 
-.dropdown-links.active {
-    display: flex;
-    flex-direction: column;
-    position: absolute;
-    top: 40px;
-    background-color: #343a40;
-}
-
 .dropdown-group {
     color: rgba(255,255,255,.5);
     cursor: pointer;
@@ -44,6 +36,28 @@
 
 .dropdown {
 	padding: 8px;
+}
+
+@media screen and (max-width: 600px){
+	.dropdown-links.active {
+		display: flex;
+		flex-direction: column;
+		position: absolute;
+		top: 40px;
+		left: 110px;
+		width: 100px;
+		background-color: #343a40;
+	}
+}
+
+@media screen and (min-width: 601px) {
+	.dropdown-links.active {
+		display: flex;
+		flex-direction: column;
+		position: absolute;
+		top: 40px;
+		background-color: #343a40;
+	}
 }
 
 

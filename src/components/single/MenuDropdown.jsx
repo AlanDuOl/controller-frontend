@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { Nav } from 'react-bootstrap'
 import Dropdown from '../widget/Dropdown'
 import { Link } from 'react-router-dom'
-
 import '../../css/MenuDropdown.css'
 
 class MenuDropdown extends Component {
@@ -10,22 +9,31 @@ class MenuDropdown extends Component {
 		super(props)
 
 		this.state = {
-			toggleMenu: false
+			isMenuOpen: false,
+			closeDropdowns: false,
 		}
 	}
 
-	openMenu = () => {
-		let currentState = this.state.toggleMenu
-		this.setState({ toggleMenu: !currentState })
+	toggleMenu = () => {
+		let currentState = this.state.isMenuOpen
+		this.setState({ isMenuOpen: !currentState })
 	}
 
 	handleClick = event => {
 		const dropdown = document.getElementsByClassName('dropdown-group')
 		const btn = document.getElementsByClassName('menu-btn')
-        if(event.target !== dropdown[0] && event.target !== btn[0]){
-            if(this.state.toggleMenu){
-                this.setState({ toggleMenu: false })
-            }
+		console.log(btn[0])
+        if(event.target !== dropdown[0] && event.target !== dropdown[1] && event.target !== btn[0]){
+            if(this.state.isMenuOpen){
+                this.setState({ isMenuOpen: false, closeDropdowns: true })
+            } else {
+				if(btn[0].style.display === 'none'){
+					console.log('abc')
+					this.setState({ closeDropdowns: true })
+				} else {
+					this.setState({ closeDropdowns: false })
+				}
+			}
         }
     }
 
@@ -40,11 +48,11 @@ class MenuDropdown extends Component {
 	render() {
 		return (
 			<div className="menu-dropdown">
-				<Nav onClick={this.openMenu} className="mr-auto menu-btn"></Nav>
-				<Nav className={this.state.toggleMenu ? "mr-auto show-menu" : "mr-auto hide-menu"}>
+				<Nav onClick={this.toggleMenu} className="mr-auto menu-btn"></Nav>
+				<Nav className={this.state.isMenuOpen ? "mr-auto show-menu" : "mr-auto hide-menu"}>
 						<Link className="link-home" to="/">Home</Link>
-						<Dropdown title="Usuário" links={[{name: "Perfil", path: "/user/:id"}, {name: "Sign-out", path:"/auth"}]} />
-						<Dropdown title="Operações" links={[{name: "Inserir", path: "/transactions/insert"}, {name: "Visualizar", path: "/transactions/view"}]}/>
+						<Dropdown closeDropdowns={this.state.closeDropdowns} title="Usuário" links={[{name: "Perfil", path: "/user/:id"}, {name: "Sign-out", path:"/auth"}]} />
+						<Dropdown closeDropdowns={this.state.closeDropdowns} title="Operações" links={[{name: "Inserir", path: "/transactions/insert"}, {name: "Visualizar", path: "/transactions/view"}]}/>
 				</Nav>
 			</div>
 		)
