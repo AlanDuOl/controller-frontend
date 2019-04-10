@@ -40,22 +40,35 @@ class Dropdown extends Component {
         return result
     }
 
-    // handleClick = event => {
-        // const node = document.getElementsByClassName('dropdown-group')
-        // if(event.target !== node[0] && event.target !== node[1]){
-            // if(this.state.activeDropdown){
-                // this.setState({ activeDropdown: false })
-            // }
-        // }
-    // }
+    handleClick = event => {
+		const btn = document.getElementsByClassName('menu-btn')
+        if(event.target.innerHTML !== this.props.title && event.target !== btn[0]){
+            if(this.props.isMenuOpen){
+                this.props.closeMenu()
+				if(this.state.activeDropdown){
+					this.setState({ activeDropdown: false })	
+				}
+            } else {
+				if(this.state.activeDropdown){
+					this.setState({ activeDropdown: false })	
+				}
+			}
+        } else if(event.target.innerHTML === this.props.title){
+			// if(!this.props.isMenuOpen){
+				// this.setState({ activeDropdown: false })
+			// }
+			// this.toggleDropdown()
+		}
+		console.log(event.target.className)
+    }
 
-    // componentDidMount(){
-        // document.addEventListener('click', this.handleClick, true)
-    // }
+    componentDidMount(){
+		document.addEventListener('click', this.handleClick, true)
+    }
 
-    // componentWillUnmount(){
-        // document.removeEventListener('click', this.handleClick, true)
-    // }
+    componentWillUnmount(){
+        document.removeEventListener('click', this.handleClick, true)
+    }
 
     render(){
         return(
