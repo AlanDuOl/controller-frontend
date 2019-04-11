@@ -15,6 +15,15 @@ class Dropdown extends Component {
             activeDropdown: false
         }
     }
+	
+	getDropdowns = () => {
+		let dropdowns = []
+		const node = document.getElementsByClassName('dropdown-group')
+		for(let index = 0; index < node.length; index++){
+			dropdowns.push(node[index].innerHTML)
+		}
+		return dropdowns
+	}
 
     toggleDropdown = () => {
         let currentState = this.state.activeDropdown
@@ -39,35 +48,43 @@ class Dropdown extends Component {
         }
         return result
     }
+	
+	handleResize = () => {
+		this.props.closeMenu()
+	}
 
     handleClick = event => {
+		const dropdowns = this.getDropdowns()
 		const btn = document.getElementsByClassName('menu-btn')
-        if(event.target.innerHTML !== this.props.title && event.target !== btn[0]){
-            if(this.props.isMenuOpen){
-                this.props.closeMenu()
+
+		if(this.props.isMenuOpen){
+			if(!dropdowns.includes(event.target.innerHTML) && event.target !== btn[0]){
+				this.props.closeMenu()
 				if(this.state.activeDropdown){
 					this.setState({ activeDropdown: false })	
 				}
-            } else {
+			} else {
+				if(dropdowns.includes(event.target.innerHTML) && event.target.innerHTML !== this.props.title){
+					this.setState({ activeDropdown: false })
+				}
+			}
+		} else {
+			if(event.target.innerHTML !== this.props.title){
 				if(this.state.activeDropdown){
 					this.setState({ activeDropdown: false })	
 				}
 			}
-        } else if(event.target.innerHTML === this.props.title){
-			// if(!this.props.isMenuOpen){
-				// this.setState({ activeDropdown: false })
-			// }
-			// this.toggleDropdown()
 		}
-		console.log(event.target.className)
     }
 
     componentDidMount(){
 		document.addEventListener('click', this.handleClick, true)
+		document.addEventListener('resize', this.handleResize)
     }
 
     componentWillUnmount(){
         document.removeEventListener('click', this.handleClick, true)
+		document.addEventListener('resize', this.handleResize)
     }
 
     render(){
