@@ -1,7 +1,7 @@
 #footer {
-	display: flex;
     grid-area: footer;
 	padding: 3px 5px;
+	background-color: #343a40;
 }
 
 #footer-content::before {
@@ -10,5 +10,12 @@
 }
 
 #footer-content {
-	font-size: 1rem;
+	color: #fff;
+	margin-top: 5px;
+}
+
+@media screen and (max-width: 600px){
+	#footer-content {
+		margin-top: 10px;
+	}
 }
