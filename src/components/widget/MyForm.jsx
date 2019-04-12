@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Form, Button } from 'react-bootstrap'
 import axios from 'axios'
 import { baseApiUrl } from '../../global'
+import '../../css/MyForm.css'
 
 class MyForm extends Component {
 

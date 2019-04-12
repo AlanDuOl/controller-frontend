@@ -4,6 +4,5 @@
 		"header"
 		"content"
 		"footer";
-	grid-template-rows: 1fr 8.5fr 0.5fr;
-	/* height: 100vh; */
+	grid-template-rows: 0.5fr 9fr 0.5fr;
 }

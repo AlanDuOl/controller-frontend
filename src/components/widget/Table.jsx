@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { baseApiUrl } from '../../global'
 import axios from 'axios'
+import '../../css/Table.css'
 
 class Table extends Component {
 	
@@ -67,10 +68,13 @@ class Table extends Component {
 
     render(){
         return (
-            <table id="table">
-                {this.createHead()}
-				{this.state.readyToLoad ? this.createBody() : null }
-            </table>
+			<div id="table-container">
+				<label id="table-header">Transações recentes</label>
+				<table id="table">
+					{this.createHead()}
+					{this.state.readyToLoad ? this.createBody() : null }
+				</table>
+			</div>
         )
     }
 }
