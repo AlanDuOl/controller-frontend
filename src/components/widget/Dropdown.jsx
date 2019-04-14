@@ -84,7 +84,7 @@ class Dropdown extends Component {
 
     componentWillUnmount(){
         document.removeEventListener('click', this.handleClick, true)
-		document.addEventListener('resize', this.handleResize)
+		document.removeEventListener('resize', this.handleResize)
     }
 
     render(){
