@@ -15,6 +15,8 @@ class MenuSearch extends Component {
 
 			this.toggleSearch = this.toggleSearch.bind(this)
 			this.handleSubmit = this.handleSubmit.bind(this)
+
+			this.data = ''
 		}
 
 	toggleSearch() {
@@ -23,15 +25,30 @@ class MenuSearch extends Component {
 	}
 
 	handleSubmit(e) {
-			if(e.keyCode === 13 || e.which === 13){
-					let currentState = this.state.activeMenu
-					this.setState({ activeMenu: !currentState})
-			}
+		e.preventDefault()
+		document.getElementsByClassName('mr-sm-2')[0].value = ''
+	}
+
+	handleKeyPressed = e => {
+		if(e.keyCode === 13 || e.which === 13){
+			e.preventDefault()
+			let currentState = this.state.activeMenu
+			this.setState({ activeMenu: !currentState})
+			e.target.value = ''
+		}
+	}
+
+	handleChange = event => {
+		this.data = event.target.value
+	}
+
+	handleResize = () => {
+		this.setState({ activeMenu: false })
 	}
 
 	handleClick = event => {
-		const box = document.getElementsByClassName('menu-search-box')
-		const icon = document.getElementsByClassName('menu-search-icon')
+		const box = document.getElementsByClassName('search-box')
+		const icon = document.getElementsByClassName('search-icon')
 		const inputBox = document.getElementsByClassName('mr-sm-2')
 		if(event.target !== box[0] && event.target !== icon[0] && event.target !== inputBox[0]){
 				if(this.state.activeMenu){
@@ -41,12 +58,14 @@ class MenuSearch extends Component {
 	}
 
 	componentDidMount(){
-				document.addEventListener('click', this.handleClick, true)
-		}
+		document.addEventListener('click', this.handleClick, true)
+		window.addEventListener('resize', this.handleResize)
+	}
 
-		componentWillUnmount(){
-				document.removeEventListener('click', this.handleClick, true)
-		}
+	componentWillUnmount(){
+		document.removeEventListener('click', this.handleClick, true)
+		window.removeEventListener('resize', this.handleResize)
+	}
 
 	render() {
 		return (
@@ -54,8 +73,8 @@ class MenuSearch extends Component {
 					<Form onClick={this.toggleSearch} inline className="search-icon">
 					</Form>
 					<Form inline className={this.state.activeMenu ? "search-box-show" : "search-box search-box-hide"}>
-						<FormControl type="text" placeholder="Pesquisa..." className="mr-sm-2" onKeyPress={this.handleSubmit}/>
-						<Button variant="outline-info">Buscar</Button>
+						<FormControl type="text" placeholder="Pesquisa..." className="mr-sm-2" onChange={this.handleChange} onKeyPress={this.handleKeyPressed}/>
+						<Button variant="outline-info" onClick={this.handleSubmit}>Buscar</Button>
 					</Form>
 				</div>
 		);
