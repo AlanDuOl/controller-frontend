@@ -45,3 +45,8 @@
 	border: 1px solid black;
 	text-align: center;
 }
+
+.total {
+	font-weight: 900;
+	background-color: #EAEAFF;
+}

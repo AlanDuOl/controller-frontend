@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+﻿import React, { Component } from 'react'
 import '../../css/Insert.css'
 import MyForm from '../widget/MyForm'
 import { connect } from 'react-redux'
@@ -8,7 +8,7 @@ class Insert extends Component {
 
     table = {
         head: ['Natureza', 'Tipo', 'Descrição', 'Valor', 'Data'],
-        data: {}
+        header: 'Transações recentes'
     }
 
     render() {
