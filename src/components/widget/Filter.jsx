@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import '../../css/Filter.css'
+import axios from 'axios'
+import { baseApiUrl } from '../../global.js'
 
 class Filter extends Component {
 	
@@ -7,7 +9,8 @@ class Filter extends Component {
 		super(props)
 		
 		this.state = {
-			openFilter: false
+			openFilter: false,
+			transactions: []
 		}
 	}
 
@@ -21,8 +24,25 @@ class Filter extends Component {
     handleChange = event => {
         this.data[event.target.name] = event.target.value
     }
+	
+	getData = () => {
+        axios.get(`${baseApiUrl}/transactions/insert`)
+            .then(res => {
+				this.setState({ transactions: res.data })
+			})
+            .catch(err => console.log('didnt load data from server: ', err))
+    }
+	
+	filterData = () => {
+		const val = this.state.transactions
+		let dates = []
+		for(let i = 0; i < val.length; i++){
+			if(val[i]['transactionDate']) dates.push(val[i]['transactionDate'])
+		}
+		return dates
+	}
 
-    clearData = () => {
+    clearFilter = () => {
 		const selection = document.getElementsByClassName("filter-input")
 		selection[0].value = "--"
         this.data = {}
@@ -44,9 +64,11 @@ class Filter extends Component {
         return (
             <div id="home-filter-container">
 				<button id="filter" onClick={this.showFilterDropdown}></button>
-				<button id="filter-clear" onClick={this.clearData}></button>
+				<button id="filter-clear" onClick={this.clearFilter}></button>
 				<div className={this.state.openFilter ? "filter-dropdown active":"filter-dropdown"}>
 					{this.renderFilters()}
+					<div onClick={this.filterData}>Content</div>
+					{this.getData()}
 				</div>
             </div>
         )
