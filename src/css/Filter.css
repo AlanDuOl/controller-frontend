@@ -1,0 +1,29 @@
+.filter {
+	margin: 30px 0;
+	margin-left: 16px;
+}
+
+.filter::after {
+	font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+	content: "\f0b0";
+	color: gray;
+	padding: 8px;
+	padding-right: 2px;
+}
+
+.clear-filter {
+    margin: 30px 0;
+	margin-left: 16px;
+}
+
+.clear-filter::after {
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    content: "\f55d";
+    color: rgb(80, 80, 80);
+}
+
+/* .home-filter.active {
+
+} */

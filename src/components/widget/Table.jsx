@@ -72,7 +72,7 @@ class Table extends Component {
 			rows.push((<tr className="table-row" key={i}>{data}</tr>))
 		}
 		let vals = this.filter(this.state.transactions)
-		if(this.props.table.total) {
+		if(this.props.table.hosTotal) {
 			let newLine = []
 			for(let a = 0; a < this.fields.length; a++){
 				let el = []

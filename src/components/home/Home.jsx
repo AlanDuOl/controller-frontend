@@ -1,21 +1,19 @@
 import React, { Component } from 'react';
 import Table from '../widget/Table'
 import '../../css/Home.css'
+import Filter from '../widget/Filter'
 
 class Home extends Component {
 	
 	table = {
-        head: ['Natureza', 'Tipo', 'Descrição', 'Data', 'Valor'],
-		total: true
+        head: ['Natureza', 'Tipo', 'DescriÃ§Ã£o', 'Data', 'Valor'],
+		hosTotal: true
     }
 	
     render() {
         return (
             <div className="home-table">
-				<div id="home-filters-container">
-					<button className="home-filter">Ano</button>
-					<button className="home-filter">Mês</button>
-				</div>
+				<Filter filters={[{name: "Dia"}, {name: "Semana"}, {name: "MÃªs"}, {name: "Ano"}]}/>
 				<Table table={this.table} />
 			</div>
         );
