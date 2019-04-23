@@ -47,7 +47,6 @@ class Table extends Component {
 	filter = (val) => {
 		let vals = []
 		for(let i = 0; i < val.length; i++){
-			console.log()
 			if(val[i]['amount']) vals.push(val[i]['amount'])
 		}
 		return vals
