@@ -32,18 +32,16 @@ class Filter extends Component {
 		let val = []
 		let key = 0
 		for(let item of selectVal){
-			val.push(<li key={key++} className="list-items">{item}</li>)
+			val.push(<option key={key++} className="filter-input-option">{item}</option>)
 		}
 		return(
-			<div className="list-container">
-				<ul className="list-options">
-					{val}
-				</ul>
-			</div>
+			<select multiple className="filter-input-select">
+				{val}
+			</select>
 		)
 	}
 	
-	sendFilterData = () => {
+	storeFilterData = () => {
 		
 	}
 	
@@ -60,9 +58,9 @@ class Filter extends Component {
 		let dates = {dias: new Set(), meses: new Set(), anos: new Set()}
 		for(let i = 0; i < val.length; i++){
 			if(val[i]['transactionDate']) {
-				dates.dias.add((val[i]['transactionDate']).slice(0,10))
 				let newDate = val[i]['transactionDate'].slice(0,10).split('-')
-				dates.meses.add(newDate[1])
+				dates.dias.add(`${newDate[2]}-${newDate[1]}-${newDate[0]}`)
+				dates.meses.add(`${newDate[1]}-${newDate[0]}`)
 				dates.anos.add(newDate[0])
 			}
 		}
@@ -70,8 +68,8 @@ class Filter extends Component {
 	}
 
     clearFilter = () => {
-		const selection = document.getElementsByClassName("filter-input")
-		selection[0].value = "--"
+		const selection = document.getElementById("input-clear")
+		selection.value = "--"
 		this.setState({ selectVal: undefined })
     }
 
@@ -83,7 +81,7 @@ class Filter extends Component {
 			options.push(<option key={index} className="filter-input-option">{filters[index].name}</option>)
         }
 		options.push(<option key={100} className="filter-input-option">--</option>)
-		renderFilters.push(<select defaultValue="--" name="select" key={1000} className="filter-input" onChange={this.handleChange}>{options}</select>)
+		renderFilters.push(<select id="input-clear" defaultValue="--" name="select" key={1000} className="filter-input-select" onChange={this.handleChange}>{options}</select>)
         return renderFilters
     }
 	
@@ -99,7 +97,7 @@ class Filter extends Component {
 				<div className={this.state.openFilter ? "filter-dropdown active":"filter-dropdown"}>
 					{this.renderFilters()}
 					{this.state.selectVal ? this.loadOptions(): null}
-					<button onClick={this.sendFilterData}>Aplicar</button>
+					<button id="filter-send" onClick={this.sendFilterData}>Aplicar</button>
 				</div>
             </div>
         )

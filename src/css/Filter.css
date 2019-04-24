@@ -27,7 +27,7 @@
 
 .filter-dropdown {
 	display: none;
-	width: 110px;
+	min-width: 110px;
 }
 
 .filter-dropdown.active {
@@ -39,7 +39,7 @@
 	background-color: rgba(80, 80, 80, 255);
 }
 
-.filter-input {
+.filter-input-select {
 	margin: 8px;
 }
 
@@ -51,4 +51,17 @@
 	background-color: rgba(150, 150, 150, 255);
 	cursor: pointer;
 }
+
+#filter-send {
+	margin: 8px;
+	border: 1px solid #17a2b8;
+	color: #17a2b8;
+	border-radius: 3px;
+}
+
+#filter-send:hover {
+	background-color: #17a2b8;
+	color: #FFF;
+}
+
 
