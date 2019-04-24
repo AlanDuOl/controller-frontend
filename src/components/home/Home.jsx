@@ -13,7 +13,7 @@ class Home extends Component {
     render() {
         return (
             <div className="home-table">
-				<Filter filters={[{name: "Dia"}, {name: "Semana"}, {name: "Mês"}, {name: "Ano"}]}/>
+				<Filter filters={[{name: "dias"}, {name: "meses"}, {name: "anos"}]}/>
 				<Table table={this.table} />
 			</div>
         );
