@@ -11,7 +11,7 @@ class PrivateRoutes extends Component {
     render(){
         return(
             <div id="private-routes">
-				<Header />
+			    <Header />
 				<Switch>
                     <Redirect from="/auth" to="/" />
 					<Route exact path="/" component={Home} />

@@ -10,20 +10,42 @@ class Filter extends Component {
 		
 		this.state = {
 			openFilter: false,
-			transactions: []
+			transactions: [],
+			dates: {},
+			selectVal: ''
 		}
 	}
 
-    data = {}
-
     showFilterDropdown = () => {
+		if(!this.state.openFilter) this.filterDates()
 		let currentStatus = this.state.openFilter
 		this.setState({ openFilter: !currentStatus })
     }
 
     handleChange = event => {
-        this.data[event.target.name] = event.target.value
+		this.setState({ selectVal: event.target.value })
     }
+	
+	loadOptions = () => {
+		if(this.state.selectVal === '--') return
+		const selectVal = this.state.dates[this.state.selectVal]
+		let val = []
+		let key = 0
+		for(let item of selectVal){
+			val.push(<li key={key++} className="list-items">{item}</li>)
+		}
+		return(
+			<div className="list-container">
+				<ul className="list-options">
+					{val}
+				</ul>
+			</div>
+		)
+	}
+	
+	sendFilterData = () => {
+		
+	}
 	
 	getData = () => {
         axios.get(`${baseApiUrl}/transactions/insert`)
@@ -33,19 +55,24 @@ class Filter extends Component {
             .catch(err => console.log('didnt load data from server: ', err))
     }
 	
-	filterData = () => {
+	filterDates = () => {
 		const val = this.state.transactions
-		let dates = []
+		let dates = {dias: new Set(), meses: new Set(), anos: new Set()}
 		for(let i = 0; i < val.length; i++){
-			if(val[i]['transactionDate']) dates.push(val[i]['transactionDate'])
+			if(val[i]['transactionDate']) {
+				dates.dias.add((val[i]['transactionDate']).slice(0,10))
+				let newDate = val[i]['transactionDate'].slice(0,10).split('-')
+				dates.meses.add(newDate[1])
+				dates.anos.add(newDate[0])
+			}
 		}
-		return dates
+		this.setState({ dates })
 	}
 
     clearFilter = () => {
 		const selection = document.getElementsByClassName("filter-input")
 		selection[0].value = "--"
-        this.data = {}
+		this.setState({ selectVal: undefined })
     }
 
     renderFilters = () => {
@@ -59,6 +86,10 @@ class Filter extends Component {
 		renderFilters.push(<select defaultValue="--" name="select" key={1000} className="filter-input" onChange={this.handleChange}>{options}</select>)
         return renderFilters
     }
+	
+	componentDidMount(){
+		this.getData()
+	}
 
     render() {
         return (
@@ -67,8 +98,8 @@ class Filter extends Component {
 				<button id="filter-clear" onClick={this.clearFilter}></button>
 				<div className={this.state.openFilter ? "filter-dropdown active":"filter-dropdown"}>
 					{this.renderFilters()}
-					<div onClick={this.filterData}>Content</div>
-					{this.getData()}
+					{this.state.selectVal ? this.loadOptions(): null}
+					<button onClick={this.sendFilterData}>Aplicar</button>
 				</div>
             </div>
         )
