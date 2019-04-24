@@ -1,4 +1,4 @@
-const homeFilterAction = (user) => {
+const homeFilterAction = (filter) => {
     return {
         type: "setFilter",
         filter
