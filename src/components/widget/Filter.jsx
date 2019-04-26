@@ -44,7 +44,9 @@ class Filter extends Component {
 	storeFilterData = () => {
 		const value = document.getElementById("filter-value").value
 		const name = this.state.selectVal
-		this.props.storeFilter({name, value})
+		if(value && name){
+			this.props.storeFilter({name, value})	
+		}
 	}
 	
 	getData = () => {
@@ -99,7 +101,7 @@ class Filter extends Component {
 				<button id="filter-clear" onClick={this.clearFilter}></button>
 				<div className={this.state.openFilter ? "filter-dropdown active":"filter-dropdown"}>
 					{this.renderFilters()}
-					{this.state.selectVal ? this.loadOptions(): null}
+					{this.state.selectVal ? this.loadOptions(): <select id="filter-value" className="filter-input-select"><option>--</option></select>}
 					<button id="filter-send" onClick={this.storeFilterData}>Aplicar</button>
 				</div>
             </div>
