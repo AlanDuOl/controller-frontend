@@ -2,7 +2,8 @@ import { createStore } from 'redux'
 import signinReducer from '../reducers/signinReducer'
 
 const defaultState = {
-    user: {}
+    user: {},
+	filter: {}
 }
 
 function configureStore(state = defaultState){

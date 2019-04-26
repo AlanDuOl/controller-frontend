@@ -91,6 +91,7 @@ class Table extends Component {
 	
 	componentDidMount() {
 		this.getData()
+		console.log(this.props.filter)
 	}
 
     render(){

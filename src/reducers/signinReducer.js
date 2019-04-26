@@ -6,6 +6,11 @@ export default (state, action) => {
 				...state,
 				user: action.user
 			}
+		case 'setFilter':
+			return {
+				...state,
+				filter: action.filter
+			}
 		default:
 			return state
 	}

@@ -2,8 +2,6 @@ import React, { Component } from 'react'
 import '../../css/Filter.css'
 import axios from 'axios'
 import { baseApiUrl } from '../../global.js'
-import homeFilterAction from '../../actions/homeFilterAction'
-import { connect } from 'react-redux'
 
 class Filter extends Component {
 	
@@ -44,9 +42,9 @@ class Filter extends Component {
 	}
 	
 	storeFilterData = () => {
-		const el = document.getElementById("filter-value")
+		const value = document.getElementById("filter-value").value
 		const name = this.state.selectVal
-		this.props.homeFilterAction({name, value: el.value})
+		this.props.storeFilter({name, value})
 	}
 	
 	getData = () => {
@@ -102,19 +100,11 @@ class Filter extends Component {
 				<div className={this.state.openFilter ? "filter-dropdown active":"filter-dropdown"}>
 					{this.renderFilters()}
 					{this.state.selectVal ? this.loadOptions(): null}
-					<button id="filter-send" onClick={this.sendFilterData}>Aplicar</button>
+					<button id="filter-send" onClick={this.storeFilterData}>Aplicar</button>
 				</div>
             </div>
         )
     }
 }
 
-const mapStateToProps = state => ({
-	...state
-});
-
-const mapDispatchToProps = dispatch => ({
-	homeFilterAction: (filter) => dispatch(homeFilterAction(filter))
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(Filter)
+export default Filter
