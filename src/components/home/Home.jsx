@@ -9,7 +9,7 @@ class Home extends Component {
 	
 	table = {
         head: ['Natureza', 'Tipo', 'Descrição', 'Data', 'Valor'],
-		hosTotal: true
+		hasTotal: true
     }
 	
 	setFilterData = filter => {
