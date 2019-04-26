@@ -44,7 +44,7 @@ class Table extends Component {
 	
 	reducer = (totalValue, initialValue) => Number(totalValue) + Number(initialValue)
 	
-	filter = (val) => {
+	filterByAmount = val => {
 		let vals = []
 		for(let i = 0; i < val.length; i++){
 			if(val[i]['amount']) vals.push(val[i]['amount'])
@@ -52,26 +52,61 @@ class Table extends Component {
 		return vals
 	}
 	
+	filterByDate = data => {
+		if(!this.props.filter.name){
+			return this.state.transactions
+		}
+		let result = []
+		switch(this.props.filter.name){
+			case 'anos':
+				for(let index in data){
+					if(data[index]['transactionDate'].slice(0,4) === this.props.filter.value){
+						result.push(data[index])
+					}
+				}
+				return result
+			case 'meses':
+				for(let index in data){
+					if(data[index]['transactionDate'].slice(5,7) === this.props.filter.value.slice(0,2)){
+						result.push(data[index])
+					}
+				}
+			return result
+			case 'dias':
+				for(let index in data){
+					if(data[index]['transactionDate'].slice(8,10) === this.props.filter.value.slice(0,2)){
+						result.push(data[index])
+					}
+				}
+				return result
+			default:
+				return this.state.transactions
+		}
+	}
+	
 	loadData = () => {
+		/*Put regular table data*/
+		const tableData = this.filterByDate(this.state.transactions)
 		let options = { day: 'numeric', month: 'numeric', year: 'numeric' }
 		let rows = []
-		for(let i = 0; i < this.state.transactions.length; i++){
+		for(let i = 0; i < tableData.length; i++){
 			let data = []
 			for(let a = 0; a < this.fields.length; a++){
 				//check the date field and change its format
 				if(a === 3){
-					let date = Date.parse(this.state.transactions[i][this.fields[a]])
+					let date = Date.parse(tableData[i][this.fields[a]])
 					let el = (<td className="table-data" key={a}>{new Date(date).toLocaleDateString("pt-BR", options)}</td>)	
 					data.push(el)
 				} else {
-					let el = (<td className="table-data" key={a}>{this.state.transactions[i][this.fields[a]]}</td>)	
+					let el = (<td className="table-data" key={a}>{tableData[i][this.fields[a]]}</td>)	
 					data.push(el)
 				}
 			}		
 			rows.push((<tr className="table-row" key={i}>{data}</tr>))
 		}
-		let vals = this.filter(this.state.transactions)
-		if(this.props.table.hosTotal) {
+		/*Check if table needs to show total on last line*/
+		let vals = this.filterByAmount(tableData)
+		if(this.props.table.hasTotal) {
 			let newLine = []
 			for(let a = 0; a < this.fields.length; a++){
 				let el = []
@@ -84,14 +119,13 @@ class Table extends Component {
 				}
 				newLine.push(el)
 			}
-			rows.push(<tr className="table-row" key={this.state.transactions.length}>{newLine}</tr>)
+			rows.push(<tr className="table-row" key={tableData.length}>{newLine}</tr>)
 		}
 		return rows
 	}
 	
 	componentDidMount() {
 		this.getData()
-		console.log(this.props.filter)
 	}
 
     render(){
