@@ -75,7 +75,7 @@ class Filter extends Component {
 		const selection = document.getElementById("input-clear")
 		selection.value = "--"
 		this.setState({ selectVal: undefined })
-		console.log(this.props.homeFilter)
+		this.props.storeFilter({})
     }
 
     renderFilters = () => {

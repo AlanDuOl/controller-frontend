@@ -16,7 +16,7 @@ class Insert extends Component {
             <div id="insert-container">   
                 <MyForm user={this.props.user} />
                 <hr/>
-                <Table table={this.table} />
+                {/*<Table table={this.table} />*/}
             </div>
         )
     }
