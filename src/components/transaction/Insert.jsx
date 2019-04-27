@@ -2,7 +2,6 @@
 import '../../css/Insert.css'
 import MyForm from '../widget/MyForm'
 import { connect } from 'react-redux'
-import Table from '../widget/Table'
 
 class Insert extends Component {
 
@@ -15,8 +14,6 @@ class Insert extends Component {
         return (
             <div id="insert-container">   
                 <MyForm user={this.props.user} />
-                <hr/>
-                {/*<Table table={this.table} />*/}
             </div>
         )
     }
