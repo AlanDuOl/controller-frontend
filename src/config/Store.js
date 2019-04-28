@@ -1,5 +1,5 @@
 import { createStore } from 'redux'
-import signinReducer from '../reducers/signinReducer'
+import reducer from '../reducers/reducer'
 
 const defaultState = {
     user: {},
@@ -7,7 +7,7 @@ const defaultState = {
 }
 
 function configureStore(state = defaultState){
-    return createStore(signinReducer, state)
+    return createStore(reducer, state)
 }
 
 export default configureStore

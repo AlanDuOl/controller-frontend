@@ -4,6 +4,7 @@ import Home from '../components/home/Home'
 import Header from '../components/template/Header'
 import Footer from '../components/template/Footer'
 import NotFound from '../components/NotFount'
+import View from '../components/transaction/View'
 import { Route, Switch, Redirect } from 'react-router-dom'
 import '../css/PrivateRoutes.css'
 
@@ -16,6 +17,7 @@ class PrivateRoutes extends Component {
                     <Redirect from="/auth" to="/" />
 					<Route exact path="/" component={Home} />
 					<Route path="/transactions/insert" component={Insert} />
+					<Route path="/transactions/view" component={View} />
 					<Route path="*" component={NotFound} />
 				</Switch>
 				<Footer />
