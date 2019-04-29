@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import axios from 'axios'
-import { baseApiUrl } from '../../global'
+import { baseApiUrl, fields } from '../../global'
 import { connect } from 'react-redux'
+import '../../css/View.css'
 
 class View extends Component {
 
@@ -24,6 +25,20 @@ class View extends Component {
 			})
             .catch(err => console.log('didnt load data from server: ', err))
     }
+	
+	loadComponents = () => {
+		let rows = []
+		const val = this.state.transactions
+		for(let index in val){
+			let data = []
+			for(let field in fields){
+				data.push(<span className="row-data" type={typeof val[index][fields[field]]} key={field+"-"+index}>{val[index][fields[field]]}</span>)
+			}
+			const btns = <div className="row-btns"><button id="edit-btn"></button><button id="delete-btn"></button></div>
+			rows.push(<div className="row-container"><div key={index} className="row-fields">{data}</div>{btns}</div>)
+		}
+		return rows
+	}
 
 	componentDidMount() {
 		this.getData()
@@ -35,7 +50,7 @@ class View extends Component {
 
     render(){
         return (
-            <div id="view-container">{console.log(this.state.transactions)}</div>
+            <div id="view-container">{this.loadComponents()}</div>
         )
     }
 }
