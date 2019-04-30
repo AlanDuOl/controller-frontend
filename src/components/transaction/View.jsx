@@ -28,11 +28,15 @@ class View extends Component {
 	
 	loadComponents = () => {
 		let rows = []
-		const val = this.state.transactions
+        const val = this.state.transactions
 		for(let index in val){
 			let data = []
 			for(let field in fields){
-				data.push(<span className="row-data" type={typeof val[index][fields[field]]} key={field+"-"+index}>{val[index][fields[field]]}</span>)
+                if(Number(field) === fields.length-1){
+                    data.push(<span className="row-data" type={typeof val[index][fields[field]]} key={field+"-"+index}>{`${val[index][fields[field]].slice(8,10)}-${val[index][fields[field]].slice(5,7)}-${val[index][fields[field]].slice(0,4)}`}</span>)
+                } else {
+                    data.push(<span className="row-data" type={typeof val[index][fields[field]]} key={field+"-"+index}>{val[index][fields[field]]}</span>)
+                }
 			}
 			const btns = <div className="row-btns"><button id="edit-btn"></button><button id="delete-btn"></button></div>
 			rows.push(<div className="row-container"><div key={index} className="row-fields">{data}</div>{btns}</div>)
