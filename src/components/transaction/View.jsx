@@ -3,6 +3,7 @@ import axios from 'axios'
 import { baseApiUrl, fields } from '../../global'
 import { connect } from 'react-redux'
 import '../../css/View.css'
+import ViewForm from '../widget/ViewForm'
 
 class View extends Component {
 
@@ -54,7 +55,10 @@ class View extends Component {
 
     render(){
         return (
-            <div id="view-container">{this.loadComponents()}</div>
+            <div id="view-container">
+				<ViewForm user={this.props.user} />
+				{this.loadComponents()}
+			</div>
         )
     }
 }
