@@ -21,7 +21,8 @@
 
 .row-data {
 	display: inline-block;
-	width: 50px;
+	width: 100px;
+	text-align: center;
 }
 
 .row-btns {
