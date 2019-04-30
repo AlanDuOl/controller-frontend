@@ -39,7 +39,7 @@ class View extends Component {
                 }
 			}
 			const btns = <div className="row-btns"><button id="edit-btn"></button><button id="delete-btn"></button></div>
-			rows.push(<div className="row-container"><div key={index} className="row-fields">{data}</div>{btns}</div>)
+			rows.push(<div className="row-container" key={index}><div className="row-fields">{data}</div>{btns}</div>)
 		}
 		return rows
 	}
