@@ -3,32 +3,62 @@
 	flex-direction: column;
 }
 
+
+.row-container {
+	display: flex;
+	justify-content: space-between;
+	margin: 16px;
+	border: 1px solid #17a2b8;
+	border-radius: 3px;
+}
+
 .row-fields {
 	display: flex;
 	flex-direction: row;
 	justify-content: space-around;
-	/* padding: 0 8px; */
-	width: 95%;
+	width: 94%;
+}
+
+.row-data {
+	display: inline-block;
+	width: 50px;
 }
 
 .row-btns {
 	display: flex;
 	flex-direction: row;
 	justify-content: space-around;
-	width: 5%;
-}
-
-.row-container {
-	display: flex;
-	justify-content: space-between;
-	margin: 16px;
-	border: 1px solid gray;
+	width: 6%;
 }
 
 #edit-btn {
-	
+	color: #17a2b8;
+	background-color: rgba(190, 190, 190, 1);
+}
+
+#edit-btn:hover {
+	color: #FFF;
+	background-color: #17a2b8;
+}
+
+#edit-btn::after {
+	font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    content: "\f044";
 }
 
 #delete-btn {
-	
+	color: #17a2b8;
+	background-color: rgba(190, 190, 190, 1);
+}
+
+#delete-btn:hover {
+	color: #FFF;
+	background-color: #17a2b8;
+}
+
+#delete-btn::after {
+	font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    content: "\f2ed";
 }
