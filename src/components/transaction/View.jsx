@@ -37,7 +37,16 @@ class View extends Component {
         for(let i = 0; i < el.length; i++){
             editValues.push(el[i].innerHTML)
         }
-        this.setState({ edit: true, editData: editValues })
+        const inputs = document.querySelectorAll('#insert-form .form-control')
+        for(let i = 0; i < inputs.length; i++){
+            if(i === inputs.length -1){
+                const date = `${editValues[i].slice(3,5)}/${editValues[i].slice(0,2)}/${editValues[i].slice(6,10)}`
+                inputs[i].valueAsDate = new Date(date)
+            } 
+            else inputs[i].value = editValues[i]
+        }
+        // console.log(inputs)
+        this.setState({ edit: true })
     }
 	
 	loadComponents = () => {
@@ -69,7 +78,7 @@ class View extends Component {
     render(){
         return (
             <div id="view-container">
-				<ViewForm user={this.props.user} edit={this.state.edit} editData={this.state.editData} />
+				<ViewForm user={this.props.user} edit={this.state.edit} />
 				{this.loadComponents()}
 			</div>
         )
