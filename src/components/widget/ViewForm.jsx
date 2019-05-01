@@ -20,14 +20,14 @@ class ViewForm extends Component {
             else editValues[this.props.fields[i]] = inputs[i].value
         }
         axios.post(`${baseApiUrl}/transactions/insert`, editValues)
-            .then(res => console.log('transaction stored!'))
             .catch(err => console.log(err))
     }
 
     handleSubmit = event => {
         event.preventDefault()
         this.save()
-		event.target.reset()
+        event.target.reset()
+        this.props.disableEdit()
     }
 
     handleNullSubmit = event => {
