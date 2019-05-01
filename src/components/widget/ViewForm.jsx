@@ -13,7 +13,13 @@ class ViewForm extends Component {
     }
 
     save = () => {
-        axios.post(`${baseApiUrl}/transactions/insert`, this.data)
+        const inputs = document.querySelectorAll('#insert-form .form-control')
+        let editValues = {}
+        for(let i = 0; i < inputs.length; i++){
+            if(i === inputs.length-1) editValues[this.props.fields[i]] = inputs[i].valueAsDate
+            else editValues[this.props.fields[i]] = inputs[i].value
+        }
+        axios.post(`${baseApiUrl}/transactions/insert`, editValues)
             .then(res => console.log('transaction stored!'))
             .catch(err => console.log(err))
     }
