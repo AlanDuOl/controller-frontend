@@ -39,6 +39,10 @@ class ViewForm extends Component {
                 <Form id="insert-form" onSubmit={this.props.edit ? this.handleSubmit : this.handleNullSubmit }>
                     <Form.Row className="form-row">
                         <Form.Group className="col-width">
+                            <Form.Label>Id</Form.Label>
+                            <Form.Control type="number" placeholder="Id.." name="id" onChange={this.handleChange} />
+                        </Form.Group>
+                        <Form.Group className="col-width">
                             <Form.Label>Natureza</Form.Label>
                             <Form.Control as="select" name="type" onChange={this.handleChange}>
                                 <option>Selecione...</option>
