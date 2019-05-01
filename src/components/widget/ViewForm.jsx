@@ -24,6 +24,11 @@ class ViewForm extends Component {
 		event.target.reset()
     }
 
+    handleNullSubmit = event => {
+        event.preventDefault()
+        event.target.reset()
+    }
+
     handleChange = event => {
         this.data[event.target.name] = event.target.value
     }
@@ -31,7 +36,7 @@ class ViewForm extends Component {
     render(){
         return (
             <div id="form">
-                <Form id="insert-form" onSubmit={this.handleSubmit}>
+                <Form id="insert-form" onSubmit={this.props.edit ? this.handleSubmit : this.handleNullSubmit }>
                     <Form.Row className="form-row">
                         <Form.Group className="col-width">
                             <Form.Label>Natureza</Form.Label>
