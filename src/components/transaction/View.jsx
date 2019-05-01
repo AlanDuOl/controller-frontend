@@ -78,7 +78,7 @@ class View extends Component {
     render(){
         return (
             <div id="view-container">
-				<ViewForm user={this.props.user} edit={this.state.edit} />
+				<ViewForm user={this.props.user} edit={this.state.edit} fields={this.fields} />
 				{this.loadComponents()}
 			</div>
         )
