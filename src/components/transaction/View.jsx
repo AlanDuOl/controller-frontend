@@ -45,8 +45,11 @@ class View extends Component {
             } 
             else inputs[i].value = editValues[i]
         }
-        // console.log(inputs)
         this.setState({ edit: true })
+    }
+
+    disableEdit = () => {
+        this.setState({ edit: false })
     }
 	
 	loadComponents = () => {
@@ -78,7 +81,7 @@ class View extends Component {
     render(){
         return (
             <div id="view-container">
-				<ViewForm user={this.props.user} edit={this.state.edit} fields={this.fields} />
+				<ViewForm user={this.props.user} edit={this.state.edit} fields={this.fields} disableEdit={this.disableEdit} />
 				{this.loadComponents()}
 			</div>
         )
