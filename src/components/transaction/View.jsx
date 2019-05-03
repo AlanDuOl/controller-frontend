@@ -4,6 +4,7 @@ import { baseApiUrl } from '../../global'
 import { connect } from 'react-redux'
 import '../../css/View.css'
 import ViewForm from '../widget/ViewForm'
+import Transactions from '../widget/Transactions'
 
 class View extends Component {
 
@@ -12,7 +13,6 @@ class View extends Component {
 
         this.state = {
             transactions: [],
-            editData: [],
             edit: false
         }
 
@@ -27,7 +27,7 @@ class View extends Component {
             .catch(err => console.log('didnt load data from server: ', err))
     }
 
-    enableEdit = event => {
+	enableEdit = event => {
         let el = event.target.parentElement.parentElement.firstChild.children
         let editValues = []
         for(let i = 0; i < el.length; i++){
@@ -47,8 +47,8 @@ class View extends Component {
     disableEdit = () => {
         this.setState({ edit: false })
     }
-
-    delete = event => {
+	
+	remove = event => {
         let el = event.target.parentElement.parentElement.firstChild.children
         let editValues = []
         for(let i = 0; i < el.length; i++){
@@ -57,26 +57,9 @@ class View extends Component {
         
         axios.delete(`${baseApiUrl}/transactions/${editValues[0]}`)
             .catch(err => console.log(err))
-
+			
+		this.getData()
     }
-	
-	loadComponents = () => {
-		let rows = []
-        const val = this.state.transactions
-		for(let index in val){
-			let data = []
-			for(let field in this.fields){
-                if(Number(field) === this.fields.length-1){
-                    data.push(<span className="row-data" type={typeof val[index][this.fields[field]]} key={field+"-"+index}>{`${val[index][this.fields[field]].slice(8,10)}-${val[index][this.fields[field]].slice(5,7)}-${val[index][this.fields[field]].slice(0,4)}`}</span>)
-                } else {
-                    data.push(<span className="row-data" type={typeof val[index][this.fields[field]]} key={field+"-"+index}>{val[index][this.fields[field]]}</span>)
-                }
-			}
-			const btns = <div className="row-btns"><button id="edit-btn" onClick={this.enableEdit}></button><button id="delete-btn" onClick={this.delete}></button></div>
-			rows.push(<div className="row-container" key={index}><div className="row-fields">{data}</div>{btns}</div>)
-        }
-		return rows
-	}
 
 	componentDidMount() {
 		this.getData()
@@ -86,7 +69,7 @@ class View extends Component {
         return (
             <div id="view-container">
 				<ViewForm user={this.props.user} edit={this.state.edit} fields={this.fields} disableEdit={this.disableEdit} />
-				{this.loadComponents()}
+				<Transactions transactions={this.state.transactions} enableEdit={this.enableEdit} fields={this.fields} remove={this.remove} />
 			</div>
         )
     }
