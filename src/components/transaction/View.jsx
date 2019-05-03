@@ -46,6 +46,7 @@ class View extends Component {
 
     disableEdit = () => {
         this.setState({ edit: false })
+		this.getData()
     }
 	
 	remove = event => {
