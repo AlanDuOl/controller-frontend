@@ -19,10 +19,6 @@ class View extends Component {
         this.fields = ['id', 'type', 'transaction', 'description', 'amount', 'transactionDate']
     }
 
-    renderTransactions = () => {
-
-    }
-
     getData = () => {
         axios.get(`${baseApiUrl}/transactions/${this.props.user.id}`)
             .then(res => {
@@ -51,6 +47,18 @@ class View extends Component {
     disableEdit = () => {
         this.setState({ edit: false })
     }
+
+    delete = event => {
+        let el = event.target.parentElement.parentElement.firstChild.children
+        let editValues = []
+        for(let i = 0; i < el.length; i++){
+            editValues.push(el[i].innerHTML)
+        }
+        
+        axios.delete(`${baseApiUrl}/transactions/${editValues[0]}`)
+            .catch(err => console.log(err))
+
+    }
 	
 	loadComponents = () => {
 		let rows = []
@@ -64,18 +72,14 @@ class View extends Component {
                     data.push(<span className="row-data" type={typeof val[index][this.fields[field]]} key={field+"-"+index}>{val[index][this.fields[field]]}</span>)
                 }
 			}
-			const btns = <div className="row-btns"><button id="edit-btn" onClick={this.enableEdit}></button><button id="delete-btn"></button></div>
+			const btns = <div className="row-btns"><button id="edit-btn" onClick={this.enableEdit}></button><button id="delete-btn" onClick={this.delete}></button></div>
 			rows.push(<div className="row-container" key={index}><div className="row-fields">{data}</div>{btns}</div>)
-		}
+        }
 		return rows
 	}
 
 	componentDidMount() {
 		this.getData()
-    }
-    
-    log = () => {
-        console.log(this.state.transactions)
     }
 
     render(){
