@@ -13,7 +13,7 @@ class MyForm extends Component {
     }
 
     save = () => {
-        axios.post(`${baseApiUrl}/transactions/insert`, this.data)
+        axios.post(`${baseApiUrl}/transactions`, this.data)
             .then(res => console.log('transaction stored!'))
             .catch(err => console.log(err))
     }

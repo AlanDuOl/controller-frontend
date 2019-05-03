@@ -35,7 +35,7 @@ class Table extends Component {
     }
 
     getData = () => {
-        axios.get(`${baseApiUrl}/transactions/insert`)
+        axios.get(`${baseApiUrl}/transactions`)
             .then(res => {
 				this.setState({ transactions: res.data, readyToLoad: true })
 			})
