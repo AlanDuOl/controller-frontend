@@ -50,7 +50,7 @@ class Filter extends Component {
 	}
 	
 	getData = () => {
-        axios.get(`${baseApiUrl}/transactions/insert`)
+        axios.get(`${baseApiUrl}/transactions/${this.props.user.id}`)
             .then(res => {
 				this.setState({ transactions: res.data })
 			})

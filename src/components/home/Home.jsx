@@ -19,8 +19,8 @@ class Home extends Component {
     render() {
         return (
             <div className="home-table">
-				<Filter storeFilter={this.setFilterData} filters={[{name: "dias"}, {name: "meses"}, {name: "anos"}]}/>
-				<Table table={this.table} filter={this.props.filter} />
+				<Filter storeFilter={this.setFilterData} filters={[{name: "dias"}, {name: "meses"}, {name: "anos"}]} user={this.props.user} />
+				<Table table={this.table} filter={this.props.filter} user={this.props.user} />
 			</div>
         );
     }
