@@ -19,7 +19,7 @@ class ViewForm extends Component {
             if(i === inputs.length-1) editValues[this.props.fields[i]] = inputs[i].valueAsDate
             else editValues[this.props.fields[i]] = inputs[i].value
         }
-        axios.post(`${baseApiUrl}/transactions/insert`, editValues)
+        axios.post(`${baseApiUrl}/transactions`, editValues)
             .catch(err => console.log(err))
     }
 
