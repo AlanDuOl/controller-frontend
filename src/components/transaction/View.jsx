@@ -45,18 +45,18 @@ class View extends Component {
     }
 
     disableEdit = () => {
-        this.setState({ edit: false })
 		this.getData()
+        this.setState({ edit: false })
     }
 	
-	remove = event => {
+	remove = async event => {
         let el = event.target.parentElement.parentElement.firstChild.children
         let editValues = []
         for(let i = 0; i < el.length; i++){
             editValues.push(el[i].innerHTML)
         }
         
-        axios.delete(`${baseApiUrl}/transactions/${editValues[0]}`)
+        await axios.delete(`${baseApiUrl}/transactions/${editValues[0]}`)
             .catch(err => console.log(err))
 			
 		this.getData()

@@ -12,22 +12,23 @@ class ViewForm extends Component {
         this.data = { userId: this.props.user.id }
     }
 
-    save = () => {
+    save = async () => {
         const inputs = document.querySelectorAll('#insert-form .form-control')
         let editValues = {}
         for(let i = 0; i < inputs.length; i++){
             if(i === inputs.length-1) editValues[this.props.fields[i]] = inputs[i].valueAsDate
             else editValues[this.props.fields[i]] = inputs[i].value
         }
-        axios.post(`${baseApiUrl}/transactions`, editValues)
+        await axios.post(`${baseApiUrl}/transactions`, editValues)
             .catch(err => console.log(err))
+
+        this.props.disableEdit()
     }
 
     handleSubmit = event => {
         event.preventDefault()
         this.save()
         event.target.reset()
-        this.props.disableEdit()
     }
 
     handleNullSubmit = event => {
