@@ -12,10 +12,12 @@ class MyForm extends Component {
         this.data = { userId: this.props.user.id }
     }
 
-    save = () => {
-        axios.post(`${baseApiUrl}/transactions`, this.data)
+    save = async () => {
+        await axios.post(`${baseApiUrl}/transactions`, this.data)
             .then(res => console.log('transaction stored!'))
             .catch(err => console.log(err))
+
+        this.props.reloadData()
     }
 
     handleSubmit = event => {
