@@ -56,7 +56,7 @@ class MyForm extends Component {
                         </Form.Group>
                         <Form.Group className="col-width">
                             <Form.Label>Descrição</Form.Label>
-                            <Form.Control type="text" placeholder="Ex: compra produto xpto..." name="description" onChange={this.handleChange} />
+                            <Form.Control type="text" placeholder="Ex: compra produto xpto..." name="description" maxLength={20} onChange={this.handleChange} />
                         </Form.Group>
 						<Form.Group className="col-width">
                             <Form.Label>Valor</Form.Label>
