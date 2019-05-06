@@ -5,4 +5,5 @@
 		"content"
 		"footer";
 	grid-template-rows: 0.5fr 9fr 0.5fr;
+	min-height: 100vh;
 }
