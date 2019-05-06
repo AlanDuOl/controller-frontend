@@ -21,7 +21,7 @@
 
 .row-data {
 	display: inline-block;
-	width: 100px;
+	min-width: 100px;
 	text-align: center;
 }
 
