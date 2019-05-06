@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { Navbar } from 'react-bootstrap'
 
 import '../../css/Menu.css'
-import MenuSearch from '../single/MenuSearch.jsx'
 import MenuDropdown from '../single/MenuDropdown.jsx'
 
 class Menu extends Component {
@@ -14,7 +13,6 @@ class Menu extends Component {
 		return (
 			<Navbar bg="dark" variant="dark" className="menu-bar">
 				<MenuDropdown />
-				<MenuSearch />
 			</Navbar>
 		)
 	}
