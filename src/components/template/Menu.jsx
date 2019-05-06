@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Navbar } from 'react-bootstrap'
 
 import '../../css/Menu.css'
-import MenuDropdown from '../single/MenuDropdown.jsx'
+import MenuDropdown from '../widget/MenuDropdown.jsx'
 
 class Menu extends Component {
 	constructor(props) {
