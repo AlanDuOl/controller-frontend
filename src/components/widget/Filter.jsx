@@ -16,7 +16,7 @@ class Filter extends Component {
 		}
 	}
 
-    showFilterDropdown = () => {
+    toggleFilterDropdown = () => {
 		if(!this.state.openFilter) this.filterDates()
 		let currentStatus = this.state.openFilter
 		this.setState({ openFilter: !currentStatus })
@@ -45,8 +45,9 @@ class Filter extends Component {
 		const value = document.getElementById("filter-value").value
 		const name = this.state.selectVal
 		if(value && name){
-			this.props.storeFilter({name, value})	
+			this.props.storeFilter({name, value})
 		}
+		this.setState({ openFilter: false })
 	}
 	
 	getData = () => {
@@ -97,7 +98,7 @@ class Filter extends Component {
     render() {
         return (
             <div id="home-filter-container">
-				<button id="filter" onClick={this.showFilterDropdown}></button>
+				<button id="filter" onClick={this.toggleFilterDropdown}></button>
 				<button id="filter-clear" onClick={this.clearFilter}></button>
 				<div className={this.state.openFilter ? "filter-dropdown active":"filter-dropdown"}>
 					{this.renderFilters()}
