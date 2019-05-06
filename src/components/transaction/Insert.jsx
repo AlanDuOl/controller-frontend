@@ -16,10 +16,6 @@ class Insert extends Component {
         this.limit = 5
     }
 
-    table = {
-        head: ['Natureza', 'Tipo', 'Descrição', 'Valor', 'Data']
-    }
-
     getData = () => {
         axios.get(`${baseApiUrl}/transactions/${this.props.user.id}/${this.limit}`)
             .then(res => {
