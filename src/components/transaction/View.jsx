@@ -50,7 +50,10 @@ class View extends Component {
     }
 	
 	remove = async event => {
-        let el = event.target.parentElement.parentElement.firstChild.children
+		let check = window.confirm("Confirma exclusão?")
+		
+		if(check){
+			let el = event.target.parentElement.parentElement.firstChild.children
         let editValues = []
         for(let i = 0; i < el.length; i++){
             editValues.push(el[i].innerHTML)
@@ -60,6 +63,7 @@ class View extends Component {
             .catch(err => console.log(err))
 			
 		this.getData()
+		}
     }
 
 	componentDidMount() {
