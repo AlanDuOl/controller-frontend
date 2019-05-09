@@ -36,7 +36,7 @@ class MyForm extends Component {
                 <label id="form-header">Inserir transação</label>
                 <Form id="insert-form" onSubmit={this.handleSubmit}>
                     <Form.Row className="form-row">
-                        <Form.Group className="col-width">
+                        <Form.Group>
                             <Form.Label>Natureza</Form.Label>
                             <Form.Control as="select" name="type" onChange={this.handleChange}>
                                 <option>Selecione...</option>
@@ -44,7 +44,7 @@ class MyForm extends Component {
                                 <option>Despesa</option>
                             </Form.Control>
                         </Form.Group>
-                        <Form.Group className="col-width">
+                        <Form.Group>
                             <Form.Label>Tipo</Form.Label>
                             <Form.Control as="select" name="transaction" onChange={this.handleChange}>
                                 <option>Selecione...</option>
@@ -54,15 +54,15 @@ class MyForm extends Component {
                                 <option>Outro</option>
                             </Form.Control>
                         </Form.Group>
-                        <Form.Group className="col-width">
+                        <Form.Group>
                             <Form.Label>Descrição</Form.Label>
                             <Form.Control type="text" placeholder="Ex: compra produto xpto..." name="description" maxLength={20} onChange={this.handleChange} />
                         </Form.Group>
-						<Form.Group className="col-width">
+						<Form.Group>
                             <Form.Label>Valor</Form.Label>
                             <Form.Control type="number" placeholder="R$..." name="amount" onChange={this.handleChange} />
                         </Form.Group>
-                        <Form.Group className="col-width">
+                        <Form.Group>
                             <Form.Label>Data</Form.Label>
                             <Form.Control type="date" name="transactionDate" onChange={this.handleChange} />
                         </Form.Group>
