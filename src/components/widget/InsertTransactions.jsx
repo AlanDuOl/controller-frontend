@@ -14,8 +14,7 @@ class InsertTransactions extends Component {
                     data.push(<span className="row-data" type={typeof val[index][this.props.fields[field]]} key={field+"-"+index}>{val[index][this.props.fields[field]]}</span>)
                 }
 			}
-			const btns = <div className="row-btns"><button id="edit-btn" onClick={this.props.enableEdit}></button><button id="delete-btn" onClick={this.props.remove}></button></div>
-			rows.push(<div className="row-container" key={index}><div className="row-fields">{data}</div>{btns}</div>)
+			rows.push(<div className="row-container" key={index}><div className="row-fields">{data}</div></div>)
         }
 		return rows
     }
