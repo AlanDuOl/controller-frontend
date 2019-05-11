@@ -89,6 +89,7 @@ class Table extends Component {
 		const tableData = this.filterByDate(this.state.transactions)
 		let options = { day: 'numeric', month: 'numeric', year: 'numeric' }
 		let rows = []
+		if(!this.user) return
 		for(let i = 0; i < tableData.length; i++){
 			let data = []
 			for(let a = 0; a < this.fields.length; a++){
