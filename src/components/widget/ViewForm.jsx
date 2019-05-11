@@ -81,8 +81,11 @@ class ViewForm extends Component {
                         </Form.Group>
                     </Form.Row>
                     <div id="form-btn-container">
-                        <Button className="col-width" variant="primary" type="submit" id="form-btn">
+                        <Button className="form-btn" variant="primary" type="submit">
                             Salvar
+                        </Button>
+                        <Button className="form-btn" variant="primary" type="reset">
+                            Limpar
                         </Button>
                     </div>
                 </Form>
