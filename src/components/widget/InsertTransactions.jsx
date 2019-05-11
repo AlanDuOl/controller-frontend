@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import '../../css/Transactions.css'
 
 class InsertTransactions extends Component {
 	
@@ -21,7 +22,10 @@ class InsertTransactions extends Component {
 	
 	render(){
 		return (
-			<div>{this.loadComponents()}</div>
+			<div>
+				<h5 id="i-it-header">Transações recentes</h5>
+				{this.loadComponents()}
+			</div>
 		)
 	}
 	
