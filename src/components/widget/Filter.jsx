@@ -42,7 +42,14 @@ class Filter extends Component {
 	}
 	
 	storeFilterData = () => {
-		const value = document.getElementById("filter-value").value
+		const selected = document.querySelectorAll("#filter-value option:checked")
+		let value = []
+
+		if(selected.length > 1) {
+			const arr = Array.from(selected)
+			value = arr.map(el => el.value)	
+		} else value[0] = selected[0].value
+
 		const name = this.state.selectVal
 		if(value && name){
 			this.props.storeFilter({name, value})
