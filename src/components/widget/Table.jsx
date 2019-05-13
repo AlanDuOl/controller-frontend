@@ -57,6 +57,7 @@ class Table extends Component {
 			return this.state.transactions
 		}
 		let result = []
+		let filter = this.props.filter.value
 		switch(this.props.filter.name){
 			case 'anos':
 				for(let index in data){
@@ -74,7 +75,7 @@ class Table extends Component {
 			return result
 			case 'dias':
 				for(let index in data){
-					if(data[index]['transactionDate'].slice(8,10) === this.props.filter.value.slice(0,2)){
+					if(filter.includes(`${data[index]['transactionDate'].slice(8,10)}-${data[index]['transactionDate'].slice(5,7)}-${data[index]['transactionDate'].slice(0,4)}`)){
 						result.push(data[index])
 					}
 				}
@@ -89,7 +90,9 @@ class Table extends Component {
 		const tableData = this.filterByDate(this.state.transactions)
 		let options = { day: 'numeric', month: 'numeric', year: 'numeric' }
 		let rows = []
+		
 		if(!this.props.user) return
+		
 		for(let i = 0; i < tableData.length; i++){
 			let data = []
 			for(let a = 0; a < this.fields.length; a++){
