@@ -61,14 +61,14 @@ class Table extends Component {
 		switch(this.props.filter.name){
 			case 'anos':
 				for(let index in data){
-					if(data[index]['transactionDate'].slice(0,4) === this.props.filter.value){
+					if(filter.includes(data[index]['transactionDate'].slice(0,4))){
 						result.push(data[index])
 					}
 				}
 				return result
 			case 'meses':
 				for(let index in data){
-					if(data[index]['transactionDate'].slice(5,7) === this.props.filter.value.slice(0,2)){
+					if(filter.includes(`${data[index]['transactionDate'].slice(5,7)}-${data[index]['transactionDate'].slice(0,4)}`)){
 						result.push(data[index])
 					}
 				}
