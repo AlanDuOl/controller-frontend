@@ -88,7 +88,6 @@ class Table extends Component {
 	loadData = () => {
 		/*Put regular table data*/
 		const tableData = this.filterByDate(this.state.transactions)
-		let options = { day: 'numeric', month: 'numeric', year: 'numeric' }
 		let rows = []
 		
 		if(!this.props.user) return
@@ -98,8 +97,8 @@ class Table extends Component {
 			for(let a = 0; a < this.fields.length; a++){
 				//check the date field and change its format
 				if(a === 3){
-					let date = Date.parse(tableData[i][this.fields[a]])
-					let el = (<td className="table-data" key={a}>{new Date(date).toLocaleDateString("pt-BR", options)}</td>)	
+					let date = `${tableData[i][this.fields[a]].slice(8,10)}-${tableData[i][this.fields[a]].slice(5,7)}-${tableData[i][this.fields[a]].slice(0,4)}`
+					let el = (<td className="table-data" key={a}>{date}</td>)	
 					data.push(el)
 				} else {
 					let el = (<td className="table-data" key={a}>{tableData[i][this.fields[a]]}</td>)	
