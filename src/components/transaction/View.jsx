@@ -13,8 +13,11 @@ class View extends Component {
 
         this.state = {
             transactions: [],
-            edit: false
+            edit: false,
+            startIndex: 0
         }
+
+        this.offset = 5
 
         this.fields = ['id', 'type', 'transaction', 'description', 'amount', 'transactionDate']
     }
@@ -28,7 +31,7 @@ class View extends Component {
     }
 
 	enableEdit = event => {
-        let el = event.target.parentElement.parentElement.firstChild.children
+        const el = event.target.parentElement.parentElement.firstChild.children
         let editValues = []
         for(let i = 0; i < el.length; i++){
             editValues.push(el[i].innerHTML)
@@ -66,6 +69,26 @@ class View extends Component {
 		}
     }
 
+    nextPage = () => {
+        let currentIndex = this.state.startIndex
+        let newIndex = currentIndex + this.offset
+        if(newIndex > this.state.transactions.length){
+
+        } else {
+            this.setState({ startIndex: newIndex })
+        }
+    }
+
+    previousPage = () => {
+        let currentIndex = this.state.startIndex
+        let newIndex = currentIndex - this.offset
+        if(newIndex < 0){
+
+        } else {
+            this.setState({ startIndex: newIndex })
+        }
+    }
+
 	componentDidMount() {
 		this.getData()
     }
@@ -74,7 +97,11 @@ class View extends Component {
         return (
             <div id="view-container">
 				<ViewForm user={this.props.user} edit={this.state.edit} fields={this.fields} disableEdit={this.disableEdit} />
-				<Transactions transactions={this.state.transactions} enableEdit={this.enableEdit} fields={this.fields} remove={this.remove} />
+				<Transactions transactions={this.state.transactions} enableEdit={this.enableEdit} fields={this.fields} remove={this.remove} index={this.state.startIndex} offset={this.offset} />
+                <div id="pag-btns-container">
+                    <button id="pag-btn-left" onClick={this.previousPage} title="Página anterior"></button>
+                    <button id="pag-btn-right" onClick={this.nextPage} title="Próxima página"></button>
+                </div>
 			</div>
         )
     }
