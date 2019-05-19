@@ -12,7 +12,6 @@
 @media screen and (max-width: 600px){
 	#table-container {
 		overflow-x: auto;
-		max-width: 95vw;
 		font-size: 0.8rem;
 	}
 	
@@ -23,7 +22,7 @@
 
 #table {
     border: 1px solid black;
-    padding: 5px 3px;
+    padding: 5px 0;
 	width: 100%;
     background-color: #EAEAEA;
 }

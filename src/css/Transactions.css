@@ -1,10 +1,9 @@
 .row-container {
 	display: flex;
 	justify-content: space-between;
-	margin: 16px;
 	border: 1px solid #17a2b8;
 	border-radius: 3px;
-	padding: 4px;
+	margin: 16px 0;
 }
 
 .row-fields {
@@ -12,6 +11,14 @@
 	flex-direction: row;
 	justify-content: space-around;
 	width: 96%;
+	margin: 8px 0;
+}
+
+.i-row-fields {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+	width: 100%;
 	margin: 8px 0;
 }
 
@@ -72,13 +79,19 @@
 	
 	.row-container {
 		height: 2rem;
-		margin: 8px;
+		margin: 8px 0;
 	}
 	
 	.row-fields {
 		border-radius: 2px;
 		margin: 4px 0;
 		width: 92%;
+	}
+
+	.i-row-fields {
+		border-radius: 2px;
+		margin: 4px 0;
+		width: 100%;
 	}
 	
 	.row-btns {
@@ -88,7 +101,7 @@
 	.row-data {
 		min-width: 30px;
 		font-size: 0.5rem;
-		line-height: 0.8rem;
+		line-height: 1.2rem;
 	}
 	
 	#edit-btn {

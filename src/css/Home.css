@@ -1,3 +1,9 @@
 .home-table {
 	margin: 0 16px;
 }
+
+@media screen and (max-width: 600px){
+	.home-table{
+		margin: 0 8px;
+	}
+}

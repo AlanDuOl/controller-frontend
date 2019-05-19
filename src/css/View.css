@@ -1,6 +1,13 @@
 #view-container {
 	display: flex;
 	flex-direction: column;
+	margin: 16px;
+}
+
+@media screen and (max-width: 600px){
+	#view-container {
+		margin: 8px;
+	}
 }
 
 #pag-btns-container {

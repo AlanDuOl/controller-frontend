@@ -1,20 +1,15 @@
 /* containers */
-@media screen and (max-width: 600px){
-	#insert-container {
-		padding: 4px 8px;
-	}
-}
-
-@media screen and (min-width: 601px){
-	#insert-container {
-		padding: 8px 16px;
-	}
-}
-
 #insert-container {
-    display: flex;
+	display: flex;
     flex-direction: column;
     grid-area: content;
+	margin: 16px;
+}
+
+@media screen and (max-width: 600px){
+	#insert-container {
+		margin: 8px;
+	}
 }
 
 .header {

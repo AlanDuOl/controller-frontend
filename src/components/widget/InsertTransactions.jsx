@@ -15,7 +15,7 @@ class InsertTransactions extends Component {
                     data.push(<span className="row-data" type={typeof val[index][this.props.fields[field]]} key={field+"-"+index}>{val[index][this.props.fields[field]]}</span>)
                 }
 			}
-			rows.push(<div className="row-container" key={index}><div className="row-fields">{data}</div></div>)
+			rows.push(<div className="row-container" key={index}><div className="i-row-fields">{data}</div></div>)
         }
 		return rows
     }
