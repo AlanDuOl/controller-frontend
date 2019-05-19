@@ -4,9 +4,10 @@ import '../../css/Transactions.css'
 class Transactions extends Component {
 	
 	loadComponents = () => {
-		let rows = []
         const val = this.props.transactions
-		for(let index in val){
+		let rows = []
+		const limit = (this.props.index + this.props.offset) >= val.length ? val.length : this.props.index + this.props.offset
+		for(let index = this.props.index; index < limit; index++){
 			let data = []
 			for(let field in this.props.fields){
                 if(Number(field) === this.props.fields.length-1){
