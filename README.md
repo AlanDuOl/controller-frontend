@@ -1,3 +1,7 @@
+# Controller
+This is the view part of a basic project that stores user transactions, like purchases and sales for an individual user. This was made for academic purpose only.
+The project has a backend part that can be found on this link: https://github.com/AlanDuOl/controller-backend.
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
