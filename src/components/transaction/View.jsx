@@ -56,16 +56,17 @@ class View extends Component {
 		let check = window.confirm("Confirma exclusão?")
 		
 		if(check){
-			let el = event.target.parentElement.parentElement.firstChild.children
-        let editValues = []
-        for(let i = 0; i < el.length; i++){
-            editValues.push(el[i].innerHTML)
-        }
-        
-        await axios.delete(`${baseApiUrl}/transactions/${editValues[0]}`)
-            .catch(err => console.log(err))
-			
-		this.getData()
+            console.log(check)
+            let el = event.target.parentElement.parentElement.firstChild.children
+            let editValues = []
+            for(let i = 0; i < el.length; i++){
+                editValues.push(el[i].innerHTML)
+            }
+            
+            await axios.delete(`${baseApiUrl}/transactions/${editValues[0]}`)
+                .catch(err => console.log(err))
+                
+            this.getData()
 		}
     }
 
