@@ -116,7 +116,7 @@ class Table extends Component {
 				if(a === 0){
 					el = (<td className="table-data total" key={a}>Total</td>)
 				} else if(a === this.fields.length-1){
-					el = (<td className="table-data total" key={a}>{vals.reduce(this.reducer)}</td>)
+					el = (<td className="table-data total" key={a}>{vals.reduce(this.reducer, 0)}</td>)
 				} else {
 					el = (<td className="table-data total" key={a}></td>)
 				}
