@@ -3,6 +3,7 @@ import { Form, Button } from 'react-bootstrap'
 import axios from 'axios'
 import { baseApiUrl } from '../../global'
 import '../../css/Form.css'
+import Alert from 'react-bootstrap/Alert'
 
 class ViewForm extends Component {
 
@@ -10,6 +11,8 @@ class ViewForm extends Component {
         super(props)
 
         this.data = { userId: this.props.user.id }
+        this.alertMsg = undefined
+        this.showAlert = false
     }
 
     save = async () => {
@@ -20,6 +23,9 @@ class ViewForm extends Component {
             else editValues[this.props.fields[i]] = inputs[i].value
         }
         await axios.post(`${baseApiUrl}/transactions`, editValues)
+            .then(res => {
+                this.alertMsg = res.data
+            })
             .catch(err => console.log(err))
 
         this.props.disableEdit()
@@ -43,6 +49,7 @@ class ViewForm extends Component {
     render(){
         return (
             <div id="form">
+                {/* <Alert variant="success"> { this.alertMsg } </Alert> */}
                 <Form id="insert-form" onSubmit={this.props.edit ? this.handleSubmit : this.handleNullSubmit }>
                     <Form.Row className="form-row">
                         <Form.Group>

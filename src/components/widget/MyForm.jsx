@@ -3,21 +3,44 @@ import { Form, Button } from 'react-bootstrap'
 import axios from 'axios'
 import { baseApiUrl } from '../../global'
 import '../../css/Form.css'
+import Alert from 'react-bootstrap/Alert'
 
 class MyForm extends Component {
 
     constructor(props) {
         super(props)
 
+        this.state = {
+            showAlert: false
+        }
+
         this.data = { userId: this.props.user.id }
+        this.alert = {
+            msg: undefined,
+            variant: undefined
+        }
     }
 
     save = async () => {
         await axios.post(`${baseApiUrl}/transactions`, this.data)
-            .then(res => console.log('transaction stored!'))
-            .catch(err => console.log(err))
+            .then(res => {
+                this.alert = { msg: res.data, variant: 'success' }
+                this.setState({ showAlert: true })
+                this.hideAlert()
+            })
+            .catch(err => {
+                this.alert = { msg: err.response.data, variant: 'warning' }
+                this.setState({ showAlert: true })
+                this.hideAlert()
+            })
 
         this.props.reloadData()
+    }
+
+    hideAlert = () => {
+        setTimeout(() => {
+            this.setState({ showAlert: false })
+        }, 2000)
     }
 
     handleSubmit = event => {
@@ -33,6 +56,7 @@ class MyForm extends Component {
     render(){
         return (
             <div id="form">
+                { this.state.showAlert ? <Alert variant={this.alert.variant} > { this.alert.msg } </Alert> : null }
                 <h5 id="form-header">Inserir transação</h5>
                 <Form id="insert-form" onSubmit={this.handleSubmit}>
                     <Form.Row className="form-row">
