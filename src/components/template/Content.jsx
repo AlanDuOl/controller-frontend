@@ -19,7 +19,7 @@ class Content extends Component {
 					}
 				})
 		} else {
-			console.log('no user on localStore')
+			console.log('No active session...')
 		}
 	}
 

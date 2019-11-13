@@ -4,18 +4,22 @@ import axios from 'axios'
 import { baseApiUrl, userKey } from '../../global'
 import { connect } from 'react-redux'
 import signinAction from '../../actions/signinAction'
+import Alert from 'react-bootstrap/Alert'
 
 class Auth extends Component {
 	constructor(props){
 		super(props)
 
 		this.state = {
-			loginPage: true
+			loginPage: true,
+			showAlert: false,
 		}
-
+		this.alertMsg = undefined
 		this.user = {}
 
 		this.togglePage = this.togglePage.bind(this)
+		this.showAlert = this.showAlert.bind(this)
+		this.hideAlert = this.hideAlert.bind(this)
 		this.handleSubmit = this.handleSubmit.bind(this)
 		this.handleChange = this.handleChange.bind(this)
 		this.signup = this.signup.bind(this)
@@ -27,7 +31,10 @@ class Auth extends Component {
 			.then(() => {
 					this.setState({ loginPage: true })
 				})
-			.catch(e => console.log(e))
+			.catch(e => {
+				this.alertMsg = e.response.data
+				this.showAlert()
+			})
 	}
 
 	signin(){
@@ -36,12 +43,23 @@ class Auth extends Component {
 				this.props.signinAction(res.data)
 				localStorage.setItem(userKey, JSON.stringify(res.data))
 			})
-			.catch(e => console.log(e))
+			.catch(e => {
+				this.alertMsg = e.response.data
+				this.showAlert()
+			})
 	}
 
 	togglePage() {
 		let currentState = this.state.loginPage
 		this.setState({ loginPage: !currentState })
+	}
+
+	showAlert() {
+		this.setState({ showAlert: true })
+	}
+
+	hideAlert() {
+		this.setState({ showAlert: false })
 	}
 
 	handleSubmit(event){
@@ -60,6 +78,7 @@ class Auth extends Component {
 	render() {
 		return (
 			<div id="container">
+				{ this.state.showAlert ? <Alert variant="warning" onClick={this.hideAlert} dismissible> {this.alertMsg} </Alert> : null }
 				<form onSubmit={this.handleSubmit}>
 					{this.state.loginPage ? null : <input name="name" type="text" placeholder="Nome" onChange={this.handleChange}/> }
 					<input name="email" type="text" placeholder="E-mail" onChange={this.handleChange}/>
