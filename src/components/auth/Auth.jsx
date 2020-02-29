@@ -45,6 +45,7 @@ class Auth extends Component {
 			})
 			.catch(e => {
 				this.alertMsg = e.response.data
+				console.log(e);
 				this.showAlert()
 			})
 	}
@@ -55,7 +56,12 @@ class Auth extends Component {
 	}
 
 	showAlert() {
-		this.setState({ showAlert: true })
+		try {
+			this.setState({ showAlert: true })
+		}
+		catch(e) {
+			console.log(e);
+		}
 	}
 
 	hideAlert() {

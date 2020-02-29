@@ -18,6 +18,7 @@ class Content extends Component {
 						this.props.signinAction(user)
 					}
 				})
+				.catch(e => console.log(e))
 		} else {
 			console.log('No active session...')
 		}
