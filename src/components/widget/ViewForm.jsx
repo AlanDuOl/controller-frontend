@@ -3,7 +3,6 @@ import { Form, Button } from 'react-bootstrap'
 import axios from 'axios'
 import { baseApiUrl } from '../../global'
 import '../../css/Form.css'
-import Alert from 'react-bootstrap/Alert'
 
 class ViewForm extends Component {
 
@@ -49,7 +48,6 @@ class ViewForm extends Component {
     render(){
         return (
             <div id="form">
-                {/* <Alert variant="success"> { this.alertMsg } </Alert> */}
                 <Form id="insert-form" onSubmit={this.props.edit ? this.handleSubmit : this.handleNullSubmit }>
                     <Form.Row className="form-row">
                         <Form.Group>
